@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { Github, Linkedin, Phone } from "lucide-react";
 import ParticleField from "@/components/ParticleField";
 import HeroObject from "@/components/HeroObject";
 import ScrollReveal from "@/components/ScrollReveal";
@@ -12,6 +13,7 @@ import Preloader from "@/components/Preloader";
 import GrainOverlay from "@/components/GrainOverlay";
 import Marquee from "@/components/Marquee";
 import SmoothScroll from "@/components/SmoothScroll";
+import ContactForm from "@/components/ContactForm";
 
 const projects = [
   {
