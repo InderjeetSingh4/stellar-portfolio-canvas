@@ -4,6 +4,9 @@ import HeroObject from "@/components/HeroObject";
 import ScrollReveal from "@/components/ScrollReveal";
 import ProjectCard from "@/components/ProjectCard";
 import Navbar from "@/components/Navbar";
+import CustomCursor from "@/components/CustomCursor";
+import TextReveal from "@/components/TextReveal";
+import Magnetic from "@/components/Magnetic";
 
 const projects = [
   {
@@ -33,14 +36,21 @@ const projects = [
 ];
 
 const experience = [
-  { role: "Senior Web Developer", company: "TechCorp", period: "2022 — Present" },
+  { role: "Senior Full-Stack Developer", company: "TechCorp", period: "2022 — Present" },
   { role: "Data Analyst", company: "DataFlow Inc.", period: "2020 — 2022" },
-  { role: "Full-Stack Developer", company: "StartupLab", period: "2018 — 2020" },
+  { role: "Web Developer", company: "StartupLab", period: "2018 — 2020" },
+];
+
+const socials = [
+  { label: "GitHub", href: "#" },
+  { label: "LinkedIn", href: "#" },
+  { label: "Twitter", href: "#" },
 ];
 
 const Index = () => {
   return (
     <div className="relative min-h-screen overflow-x-hidden">
+      <CustomCursor />
       <ParticleField />
       <Navbar />
 
@@ -51,11 +61,12 @@ const Index = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, ease: [0.23, 1, 0.32, 1], delay: 0.3 }}
-          className="text-center mt-8 max-w-2xl mx-auto"
+          className="text-center mt-8 max-w-3xl mx-auto"
         >
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight-custom text-foreground leading-[1.05]">
             Web Developer
-            <span className="block text-muted-foreground">&amp; Data Analyst</span>
+            <span className="block text-muted-foreground">Data Analyst</span>
+            <span className="block text-muted-foreground/60">&amp; Full-Stack Developer</span>
           </h1>
           <motion.p
             initial={{ opacity: 0 }}
@@ -63,7 +74,7 @@ const Index = () => {
             transition={{ delay: 0.8, duration: 1 }}
             className="mt-6 text-muted-foreground text-base md:text-lg max-w-md mx-auto leading-relaxed"
           >
-            Crafting elegant digital experiences through code and data-driven insights.
+            Crafting elegant digital experiences through code, data, and design.
           </motion.p>
         </motion.div>
 
@@ -90,16 +101,20 @@ const Index = () => {
           <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-4">
             About
           </p>
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight-custom text-foreground mb-8">
-            Building at the intersection of design and data.
-          </h2>
         </ScrollReveal>
+        <TextReveal
+          as="h2"
+          className="text-3xl md:text-4xl font-bold tracking-tight-custom text-foreground mb-8 flex flex-wrap"
+        >
+          Building at the intersection of design, code, and data.
+        </TextReveal>
         <ScrollReveal delay={0.15}>
           <p className="text-muted-foreground leading-relaxed text-base md:text-lg max-w-2xl">
-            I'm a developer and analyst who turns complex datasets into actionable insights
-            and elegant interfaces. With expertise spanning full-stack development and
-            statistical modeling, I bridge the gap between raw data and meaningful user
-            experiences. Every project begins with curiosity and ends with precision.
+            I'm a full-stack developer and data analyst who transforms complex datasets into
+            actionable insights and elegant interfaces. With expertise spanning modern web
+            frameworks and statistical modeling, I bridge the gap between raw data and
+            meaningful user experiences. Every project begins with curiosity and ends with
+            precision.
           </p>
         </ScrollReveal>
       </section>
@@ -110,10 +125,13 @@ const Index = () => {
           <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-4">
             Selected Work
           </p>
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight-custom text-foreground mb-12">
-            Projects
-          </h2>
         </ScrollReveal>
+        <TextReveal
+          as="h2"
+          className="text-3xl md:text-4xl font-bold tracking-tight-custom text-foreground mb-12 flex flex-wrap"
+        >
+          Projects that push boundaries.
+        </TextReveal>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {projects.map((project, i) => (
             <ProjectCard key={project.title} {...project} index={i} />
@@ -127,10 +145,13 @@ const Index = () => {
           <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-4">
             Career
           </p>
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight-custom text-foreground mb-12">
-            Experience
-          </h2>
         </ScrollReveal>
+        <TextReveal
+          as="h2"
+          className="text-3xl md:text-4xl font-bold tracking-tight-custom text-foreground mb-12 flex flex-wrap"
+        >
+          Experience and expertise.
+        </TextReveal>
         <div className="space-y-0">
           {experience.map((exp, i) => (
             <ScrollReveal key={exp.role} delay={i * 0.1}>
@@ -154,18 +175,43 @@ const Index = () => {
           <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-4">
             Get in Touch
           </p>
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight-custom text-foreground mb-6">
-            Let's work together.
-          </h2>
+        </ScrollReveal>
+        <TextReveal
+          as="h2"
+          className="text-3xl md:text-5xl font-bold tracking-tight-custom text-foreground mb-6 flex flex-wrap"
+        >
+          Let's build something extraordinary.
+        </TextReveal>
+        <ScrollReveal delay={0.15}>
           <p className="text-muted-foreground text-base md:text-lg mb-10 max-w-lg">
             Available for freelance projects, collaborations, and full-time roles.
           </p>
-          <a
-            href="mailto:hello@example.com"
-            className="inline-block glass-card glass-card-hover px-8 py-4 text-sm font-medium text-foreground tracking-wide"
-          >
-            hello@example.com
-          </a>
+        </ScrollReveal>
+        <ScrollReveal delay={0.25}>
+          <Magnetic strength={0.2}>
+            <a
+              href="mailto:hello@example.com"
+              className="inline-block glass-card glass-card-hover px-8 py-4 text-sm font-medium text-foreground tracking-wide"
+            >
+              hello@example.com
+            </a>
+          </Magnetic>
+        </ScrollReveal>
+
+        {/* Socials */}
+        <ScrollReveal delay={0.35}>
+          <div className="flex gap-6 mt-12">
+            {socials.map((s) => (
+              <Magnetic key={s.label} strength={0.3}>
+                <a
+                  href={s.href}
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-300"
+                >
+                  {s.label}
+                </a>
+              </Magnetic>
+            ))}
+          </div>
         </ScrollReveal>
       </section>
 

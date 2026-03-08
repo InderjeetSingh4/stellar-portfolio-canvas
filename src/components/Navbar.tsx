@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import Magnetic from "./Magnetic";
 
 const navItems = ["About", "Projects", "Experience", "Contact"];
 
@@ -14,18 +15,22 @@ const Navbar = () => {
         backdropFilter: "blur(20px)",
       }}
     >
-      <span className="text-foreground font-semibold text-lg tracking-tight-custom">
-        portfolio<span className="text-muted-foreground">.</span>
-      </span>
+      <Magnetic strength={0.15}>
+        <span className="text-foreground font-semibold text-lg tracking-tight-custom">
+          portfolio<span className="text-muted-foreground">.</span>
+        </span>
+      </Magnetic>
       <ul className="hidden md:flex items-center gap-8">
         {navItems.map((item) => (
           <li key={item}>
-            <a
-              href={`#${item.toLowerCase()}`}
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-300"
-            >
-              {item}
-            </a>
+            <Magnetic strength={0.25}>
+              <a
+                href={`#${item.toLowerCase()}`}
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-300"
+              >
+                {item}
+              </a>
+            </Magnetic>
           </li>
         ))}
       </ul>
