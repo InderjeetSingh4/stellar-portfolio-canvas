@@ -17,24 +17,18 @@ import ContactForm from "@/components/ContactForm";
 
 const projects = [
   {
-    title: "Analytics Dashboard",
-    description: "A real-time data visualization platform built for enterprise teams. Features interactive charts, predictive modeling, and automated reporting.",
-    tags: ["React", "D3.js", "Python", "PostgreSQL"],
+    title: "Site Stat",
+    subtitle: "Full-Stack Data Tracking & Management",
+    description: "A robust web application designed for comprehensive data tracking and management. Engineered with secure backend integration to handle real-time statistics, temporary access links, and seamless data entry.",
+    tags: ["React", "Tailwind CSS", "Supabase", "Vercel"],
+    visual: "dashboard" as const,
   },
   {
-    title: "E-Commerce Platform",
-    description: "Full-stack marketplace with headless CMS, payment integration, and a custom recommendation engine powered by collaborative filtering.",
-    tags: ["Next.js", "Stripe", "Node.js", "MongoDB"],
-  },
-  {
-    title: "ML Pipeline Tool",
-    description: "Visual drag-and-drop interface for building machine learning pipelines. Supports data preprocessing, model training, and deployment workflows.",
-    tags: ["TypeScript", "TensorFlow", "FastAPI", "Docker"],
-  },
-  {
-    title: "Portfolio CMS",
-    description: "A minimalist content management system for creatives. Markdown-first with real-time preview and one-click deployment.",
-    tags: ["React", "Tailwind", "Supabase", "Vercel"],
+    title: "Vision Pro",
+    subtitle: "Advanced Computer Vision System",
+    description: "A high-performance object detection application capable of real-time processing and live camera streaming. Built with a focus on accuracy and seamless video frame handling.",
+    tags: ["Python", "OpenCV", "YOLO", "Machine Learning"],
+    visual: "vision" as const,
   },
 ];
 
