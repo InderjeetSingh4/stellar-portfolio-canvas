@@ -165,34 +165,48 @@ const Index = () => {
             </section>
 
             {/* Contact */}
-            <section id="contact" className="section-padding max-w-4xl mx-auto pb-32">
-              <ScrollReveal>
-                <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-4">Get in Touch</p>
-              </ScrollReveal>
-              <TextReveal as="h2" className="text-3xl md:text-5xl font-bold tracking-tight-custom text-foreground mb-6 flex flex-wrap">
-                Let's build something extraordinary.
-              </TextReveal>
-              <ScrollReveal delay={0.15}>
-                <p className="text-muted-foreground text-base md:text-lg mb-10 max-w-lg">
-                  Available for freelance projects, collaborations, and full-time roles.
-                </p>
-              </ScrollReveal>
-              <ScrollReveal delay={0.25}>
-                <Magnetic strength={0.2}>
-                  <a href="mailto:hello@example.com" className="inline-block glass-card glass-card-hover px-8 py-4 text-sm font-medium text-foreground tracking-wide">
-                    hello@example.com
-                  </a>
-                </Magnetic>
-              </ScrollReveal>
-              <ScrollReveal delay={0.35}>
-                <div className="flex gap-6 mt-12">
-                  {socials.map((s) => (
-                    <Magnetic key={s.label} strength={0.3}>
-                      <a href={s.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-300">{s.label}</a>
+            <section id="contact" className="section-padding max-w-5xl mx-auto pb-32">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-start">
+                <div>
+                  <ScrollReveal>
+                    <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-4">Get in Touch</p>
+                  </ScrollReveal>
+                  <TextReveal as="h2" className="text-3xl md:text-5xl font-bold tracking-tight-custom text-foreground mb-6 flex flex-wrap">
+                    Let's build something extraordinary.
+                  </TextReveal>
+                  <ScrollReveal delay={0.15}>
+                    <p className="text-muted-foreground text-base md:text-lg mb-10 max-w-lg">
+                      Available for freelance projects, collaborations, and full-time roles.
+                    </p>
+                  </ScrollReveal>
+                  <ScrollReveal delay={0.25}>
+                    <Magnetic strength={0.2}>
+                      <a href="mailto:theinderjeet52@gmail.com" className="inline-block glass-card glass-card-hover px-8 py-4 text-sm font-medium text-foreground tracking-wide">
+                        theinderjeet52@gmail.com
+                      </a>
                     </Magnetic>
-                  ))}
+                  </ScrollReveal>
+                  <ScrollReveal delay={0.35}>
+                    <div className="flex gap-6 mt-12">
+                      {socials.map((s) => (
+                        <Magnetic key={s.label} strength={0.3}>
+                          <a
+                            href={s.href}
+                            target={s.label !== "Phone" ? "_blank" : undefined}
+                            rel={s.label !== "Phone" ? "noopener noreferrer" : undefined}
+                            className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors duration-300"
+                            aria-label={s.label}
+                          >
+                            <s.icon size={18} />
+                            <span className="hidden sm:inline">{s.label}</span>
+                          </a>
+                        </Magnetic>
+                      ))}
+                    </div>
+                  </ScrollReveal>
                 </div>
-              </ScrollReveal>
+                <ContactForm />
+              </div>
             </section>
 
             {/* Footer */}
