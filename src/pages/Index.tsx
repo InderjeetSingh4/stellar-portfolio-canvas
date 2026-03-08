@@ -45,9 +45,9 @@ const experience = [
 ];
 
 const socials = [
-  { label: "GitHub", href: "#" },
-  { label: "LinkedIn", href: "#" },
-  { label: "Twitter", href: "#" },
+  { label: "GitHub", href: "https://github.com/InderjeetSingh4", icon: Github },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/inderjeet-singh-5b9b25395", icon: Linkedin },
+  { label: "Phone", href: "tel:+917357987320", icon: Phone },
 ];
 
 const Index = () => {
