@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useRef, useCallback } from "react";
 import { motion } from "framer-motion";
 
 interface ProjectCardProps {
@@ -10,72 +10,71 @@ interface ProjectCardProps {
 
 const ProjectCard = ({ title, description, tags, index }: ProjectCardProps) => {
   const cardRef = useRef<HTMLDivElement>(null);
-  const [rotateX, setRotateX] = useState(0);
-  const [rotateY, setRotateY] = useState(0);
-  const [mouseX, setMouseX] = useState(0.5);
-  const [mouseY, setMouseY] = useState(0.5);
-  const [isHovered, setIsHovered] = useState(false);
+  const glowRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const tagsRef = useRef<HTMLDivElement>(null);
+  const state = useRef({ x: 0.5, y: 0.5, hovered: false });
 
-  const handleMouseMove = (e: React.MouseEvent) => {
+  const update = useCallback(() => {
+    const { x, y, hovered } = state.current;
+    if (cardRef.current) {
+      const rx = -(y - 0.5) * 10;
+      const ry = (x - 0.5) * 10;
+      cardRef.current.style.transform = `perspective(800px) rotateX(${hovered ? rx : 0}deg) rotateY(${hovered ? ry : 0}deg)`;
+    }
+    if (glowRef.current) {
+      glowRef.current.style.opacity = hovered ? "0.7" : "0";
+      glowRef.current.style.background = `radial-gradient(350px circle at ${x * 100}% ${y * 100}%, hsla(220, 10%, 80%, 0.1), transparent 60%)`;
+    }
+    if (contentRef.current) {
+      const tx = hovered ? (x - 0.5) * -6 : 0;
+      const ty = hovered ? (y - 0.5) * -6 : 0;
+      contentRef.current.style.transform = `translate3d(${tx}px, ${ty}px, ${hovered ? 16 : 0}px)`;
+    }
+    if (tagsRef.current) {
+      const tx = hovered ? (x - 0.5) * -3 : 0;
+      const ty = hovered ? (y - 0.5) * -3 : 0;
+      tagsRef.current.style.transform = `translate3d(${tx}px, ${ty}px, ${hovered ? 24 : 0}px)`;
+    }
+  }, []);
+
+  const onMouseMove = useCallback((e: React.MouseEvent) => {
     if (!cardRef.current) return;
     const rect = cardRef.current.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width;
-    const y = (e.clientY - rect.top) / rect.height;
-    setMouseX(x);
-    setMouseY(y);
-    setRotateX(-(y - 0.5) * 12);
-    setRotateY((x - 0.5) * 12);
-  };
-
-  const handleMouseLeave = () => {
-    setRotateX(0);
-    setRotateY(0);
-    setIsHovered(false);
-  };
-
-  const contentTranslateX = isHovered ? (mouseX - 0.5) * -8 : 0;
-  const contentTranslateY = isHovered ? (mouseY - 0.5) * -8 : 0;
+    state.current.x = (e.clientX - rect.left) / rect.width;
+    state.current.y = (e.clientY - rect.top) / rect.height;
+    update();
+  }, [update]);
 
   return (
     <motion.div
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
-      transition={{
-        type: "spring",
-        stiffness: 50,
-        damping: 25,
-        delay: index * 0.1,
-      }}
+      transition={{ type: "spring", stiffness: 50, damping: 25, delay: index * 0.1 }}
+      style={{ willChange: "transform, opacity" }}
     >
       <div
         ref={cardRef}
         data-cursor-view
-        onMouseMove={handleMouseMove}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={handleMouseLeave}
+        onMouseMove={onMouseMove}
+        onMouseEnter={() => { state.current.hovered = true; update(); }}
+        onMouseLeave={() => { state.current.hovered = false; update(); }}
         className="glass-card glass-card-hover p-8 cursor-pointer"
-        style={{
-          transform: `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`,
-          transition: "transform 0.4s cubic-bezier(0.23, 1, 0.32, 1)",
-        }}
+        style={{ transition: "transform 0.4s cubic-bezier(0.23, 1, 0.32, 1)" }}
       >
-        {/* Inner glow following mouse */}
+        {/* Inner glow */}
         <div
-          className="absolute inset-0 rounded-2xl pointer-events-none opacity-0 transition-opacity duration-500"
-          style={{
-            opacity: isHovered ? 0.6 : 0,
-            background: `radial-gradient(300px circle at ${mouseX * 100}% ${mouseY * 100}%, hsla(var(--glass-glow), 0.08), transparent 60%)`,
-          }}
+          ref={glowRef}
+          className="absolute inset-0 rounded-2xl pointer-events-none"
+          style={{ opacity: 0, transition: "opacity 0.5s ease" }}
         />
 
-        {/* Content with inner parallax */}
+        {/* Content */}
         <div
+          ref={contentRef}
           className="relative z-10"
-          style={{
-            transform: `translate3d(${contentTranslateX}px, ${contentTranslateY}px, ${isHovered ? 20 : 0}px)`,
-            transition: "transform 0.4s cubic-bezier(0.23, 1, 0.32, 1)",
-          }}
+          style={{ transition: "transform 0.4s cubic-bezier(0.23, 1, 0.32, 1)" }}
         >
           <h3 className="text-xl font-semibold text-foreground mb-3 tracking-tight-custom">
             {title}
@@ -84,11 +83,9 @@ const ProjectCard = ({ title, description, tags, index }: ProjectCardProps) => {
             {description}
           </p>
           <div
+            ref={tagsRef}
             className="flex flex-wrap gap-2"
-            style={{
-              transform: `translate3d(${contentTranslateX * 0.5}px, ${contentTranslateY * 0.5}px, ${isHovered ? 30 : 0}px)`,
-              transition: "transform 0.45s cubic-bezier(0.23, 1, 0.32, 1)",
-            }}
+            style={{ transition: "transform 0.45s cubic-bezier(0.23, 1, 0.32, 1)" }}
           >
             {tags.map((tag) => (
               <span

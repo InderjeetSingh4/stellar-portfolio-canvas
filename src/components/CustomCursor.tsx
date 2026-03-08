@@ -1,109 +1,129 @@
-import { useEffect, useRef, useState } from "react";
-import { motion, useMotionValue, useSpring } from "framer-motion";
+import { useEffect, useRef, useCallback } from "react";
 
 const CustomCursor = () => {
-  const cursorX = useMotionValue(-100);
-  const cursorY = useMotionValue(-100);
-  const springX = useSpring(cursorX, { damping: 25, stiffness: 250 });
-  const springY = useSpring(cursorY, { damping: 25, stiffness: 250 });
+  const ringRef = useRef<HTMLDivElement>(null);
+  const dotRef = useRef<HTMLDivElement>(null);
+  const pos = useRef({ x: -100, y: -100 });
+  const target = useRef({ x: -100, y: -100 });
+  const hovered = useRef(false);
+  const label = useRef("");
+  const rafId = useRef(0);
+  const isMobile = useRef(false);
 
-  const [hovered, setHovered] = useState(false);
-  const [label, setLabel] = useState("");
-  const [isMobile, setIsMobile] = useState(false);
-  const rafRef = useRef<number>(0);
+  const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
 
-  useEffect(() => {
-    const checkMobile = () => setIsMobile(window.matchMedia("(pointer: coarse)").matches);
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
+  const tick = useCallback(() => {
+    pos.current.x = lerp(pos.current.x, target.current.x, 0.15);
+    pos.current.y = lerp(pos.current.y, target.current.y, 0.15);
+
+    if (ringRef.current) {
+      const size = hovered.current ? 72 : 28;
+      ringRef.current.style.transform = `translate3d(${pos.current.x - size / 2}px, ${pos.current.y - size / 2}px, 0)`;
+      ringRef.current.style.width = `${size}px`;
+      ringRef.current.style.height = `${size}px`;
+      ringRef.current.style.borderColor = hovered.current
+        ? "hsla(220, 10%, 75%, 0.25)"
+        : "hsl(var(--foreground))";
+      ringRef.current.style.backgroundColor = hovered.current
+        ? "hsla(220, 10%, 75%, 0.06)"
+        : "transparent";
+      ringRef.current.style.backdropFilter = hovered.current ? "blur(12px)" : "none";
+
+      // label
+      const span = ringRef.current.firstElementChild as HTMLElement;
+      if (span) {
+        span.style.opacity = hovered.current && label.current ? "1" : "0";
+        span.textContent = label.current;
+      }
+    }
+
+    if (dotRef.current) {
+      dotRef.current.style.transform = `translate3d(${target.current.x - 3}px, ${target.current.y - 3}px, 0)`;
+    }
+
+    rafId.current = requestAnimationFrame(tick);
   }, []);
 
   useEffect(() => {
-    if (isMobile) return;
+    isMobile.current = window.matchMedia("(pointer: coarse)").matches;
+    if (isMobile.current) return;
 
-    const onMouseMove = (e: MouseEvent) => {
-      cancelAnimationFrame(rafRef.current);
-      rafRef.current = requestAnimationFrame(() => {
-        cursorX.set(e.clientX);
-        cursorY.set(e.clientY);
-      });
+    // hide default cursor
+    document.documentElement.style.cursor = "none";
+    const style = document.createElement("style");
+    style.textContent = "*, *::before, *::after { cursor: none !important; }";
+    document.head.appendChild(style);
+
+    const onMove = (e: MouseEvent) => {
+      target.current.x = e.clientX;
+      target.current.y = e.clientY;
     };
 
-    const onMouseOver = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      const interactive = target.closest("a, button, [data-cursor-hover], [data-cursor-view]");
-      if (interactive) {
-        setHovered(true);
-        if (interactive.hasAttribute("data-cursor-view")) {
-          setLabel("View");
-        } else {
-          setLabel("");
-        }
+    const onOver = (e: MouseEvent) => {
+      const el = (e.target as HTMLElement).closest("a, button, [data-cursor-hover], [data-cursor-view]");
+      if (el) {
+        hovered.current = true;
+        label.current = el.hasAttribute("data-cursor-view") ? "View" : "";
       }
     };
 
-    const onMouseOut = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      const interactive = target.closest("a, button, [data-cursor-hover], [data-cursor-view]");
-      if (interactive) {
-        setHovered(false);
-        setLabel("");
+    const onOut = (e: MouseEvent) => {
+      const el = (e.target as HTMLElement).closest("a, button, [data-cursor-hover], [data-cursor-view]");
+      if (el) {
+        hovered.current = false;
+        label.current = "";
       }
     };
 
-    window.addEventListener("mousemove", onMouseMove, { passive: true });
-    document.addEventListener("mouseover", onMouseOver);
-    document.addEventListener("mouseout", onMouseOut);
+    window.addEventListener("mousemove", onMove, { passive: true });
+    document.addEventListener("mouseover", onOver);
+    document.addEventListener("mouseout", onOut);
+    rafId.current = requestAnimationFrame(tick);
 
     return () => {
-      window.removeEventListener("mousemove", onMouseMove);
-      document.removeEventListener("mouseover", onMouseOver);
-      document.removeEventListener("mouseout", onMouseOut);
-      cancelAnimationFrame(rafRef.current);
+      window.removeEventListener("mousemove", onMove);
+      document.removeEventListener("mouseover", onOver);
+      document.removeEventListener("mouseout", onOut);
+      cancelAnimationFrame(rafId.current);
+      document.head.removeChild(style);
+      document.documentElement.style.cursor = "";
     };
-  }, [isMobile, cursorX, cursorY]);
+  }, [tick]);
 
-  if (isMobile) return null;
+  if (typeof window !== "undefined" && window.matchMedia("(pointer: coarse)").matches) return null;
 
   return (
     <>
-      {/* Hide default cursor globally */}
-      <style>{`*, *::before, *::after { cursor: none !important; }`}</style>
-
-      {/* Dot cursor */}
-      <motion.div
-        className="fixed top-0 left-0 z-[9999] pointer-events-none rounded-full"
+      {/* Ring */}
+      <div
+        ref={ringRef}
+        className="fixed top-0 left-0 z-[9999] pointer-events-none rounded-full border"
         style={{
-          x: springX,
-          y: springY,
-          translateX: "-50%",
-          translateY: "-50%",
-          width: hovered ? 80 : 8,
-          height: hovered ? 80 : 8,
-          backgroundColor: hovered ? "hsla(220, 10%, 75%, 0.08)" : "hsl(var(--foreground))",
-          border: hovered ? "1px solid hsla(220, 10%, 75%, 0.2)" : "none",
-          backdropFilter: hovered ? "blur(12px)" : "none",
-          mixBlendMode: hovered ? "normal" : "difference",
+          willChange: "transform, width, height",
+          mixBlendMode: "difference",
+          transition: "width 0.35s cubic-bezier(0.23,1,0.32,1), height 0.35s cubic-bezier(0.23,1,0.32,1), border-color 0.3s ease, background-color 0.3s ease, backdrop-filter 0.3s ease",
+          borderWidth: "1.5px",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          transition: "width 0.4s cubic-bezier(0.23,1,0.32,1), height 0.4s cubic-bezier(0.23,1,0.32,1), background-color 0.4s cubic-bezier(0.23,1,0.32,1), border 0.3s ease, backdrop-filter 0.3s ease",
         }}
       >
-        {hovered && label && (
-          <motion.span
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.25 }}
-            className="text-[10px] font-medium tracking-widest uppercase"
-            style={{ color: "hsl(var(--foreground))" }}
-          >
-            {label}
-          </motion.span>
-        )}
-      </motion.div>
+        <span
+          className="text-[9px] font-medium tracking-[0.2em] uppercase text-foreground"
+          style={{ transition: "opacity 0.2s ease", opacity: 0 }}
+        />
+      </div>
+      {/* Dot */}
+      <div
+        ref={dotRef}
+        className="fixed top-0 left-0 z-[9999] pointer-events-none rounded-full bg-foreground"
+        style={{
+          width: 6,
+          height: 6,
+          willChange: "transform",
+          mixBlendMode: "difference",
+        }}
+      />
     </>
   );
 };
