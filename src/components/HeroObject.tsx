@@ -12,7 +12,6 @@ function GlassSphere() {
   useFrame((state) => {
     const t = state.clock.elapsedTime;
     if (meshRef.current) {
-      // Sine-wave float
       meshRef.current.position.y = Math.sin(t * 0.6) * 0.15;
       meshRef.current.rotation.y = t * 0.12;
       meshRef.current.rotation.x = pointer.y * 0.25;
@@ -22,7 +21,6 @@ function GlassSphere() {
       innerRef.current.rotation.y = -t * 0.08;
       innerRef.current.rotation.x = t * 0.05;
     }
-    // Light follows mouse
     if (lightRef.current) {
       lightRef.current.position.x = THREE.MathUtils.lerp(lightRef.current.position.x, pointer.x * 4, 0.05);
       lightRef.current.position.y = THREE.MathUtils.lerp(lightRef.current.position.y, pointer.y * 3, 0.05);
@@ -31,7 +29,7 @@ function GlassSphere() {
 
   return (
     <>
-      <pointLight ref={lightRef} position={[0, 0, 4]} intensity={0.6} color="#b0b8c8" />
+      <pointLight ref={lightRef} position={[0, 0, 4]} intensity={0.6} color="#c0b8a8" />
       <Float speed={1} rotationIntensity={0.15} floatIntensity={0.4}>
         <mesh ref={meshRef}>
           <icosahedronGeometry args={[1.6, 1]} />
@@ -45,20 +43,14 @@ function GlassSphere() {
             distortionScale={0.25}
             temporalDistortion={0.08}
             roughness={0.3}
-            color="#7a7a7a"
+            color="#b0a898"
             transmission={0.96}
             ior={1.5}
           />
         </mesh>
-        {/* Inner wireframe */}
         <mesh ref={innerRef}>
           <icosahedronGeometry args={[1.15, 1]} />
-          <meshBasicMaterial
-            color="#555555"
-            wireframe
-            transparent
-            opacity={0.12}
-          />
+          <meshBasicMaterial color="#9a9080" wireframe transparent opacity={0.12} />
         </mesh>
       </Float>
     </>
@@ -73,8 +65,8 @@ const HeroObject = () => (
       gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
       style={{ background: "transparent" }}
     >
-      <ambientLight intensity={0.25} />
-      <directionalLight position={[5, 5, 5]} intensity={0.4} color="#c0c0c0" />
+      <ambientLight intensity={0.3} />
+      <directionalLight position={[5, 5, 5]} intensity={0.5} color="#d0c8b8" />
       <GlassSphere />
     </Canvas>
   </div>

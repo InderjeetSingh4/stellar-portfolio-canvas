@@ -2,7 +2,7 @@ import { useRef, useMemo } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 
-function Particles({ count = 800 }) {
+function Particles({ count = 600 }) {
   const mesh = useRef<THREE.Points>(null);
 
   const [positions, sizes] = useMemo(() => {
@@ -26,27 +26,10 @@ function Particles({ count = 800 }) {
   return (
     <points ref={mesh}>
       <bufferGeometry>
-        <bufferAttribute
-          attach="attributes-position"
-          count={count}
-          array={positions}
-          itemSize={3}
-        />
-        <bufferAttribute
-          attach="attributes-size"
-          count={count}
-          array={sizes}
-          itemSize={1}
-        />
+        <bufferAttribute attach="attributes-position" count={count} array={positions} itemSize={3} />
+        <bufferAttribute attach="attributes-size" count={count} array={sizes} itemSize={1} />
       </bufferGeometry>
-      <pointsMaterial
-        size={0.02}
-        color="#6b7280"
-        transparent
-        opacity={0.4}
-        sizeAttenuation
-        depthWrite={false}
-      />
+      <pointsMaterial size={0.02} color="#a09080" transparent opacity={0.25} sizeAttenuation depthWrite={false} />
     </points>
   );
 }
@@ -62,7 +45,6 @@ const ParticleField = () => {
       >
         <Particles />
       </Canvas>
-      {/* Dark gradient overlay */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{

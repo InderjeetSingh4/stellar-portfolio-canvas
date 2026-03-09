@@ -22,14 +22,13 @@ const CustomCursor = () => {
       ringRef.current.style.width = `${size}px`;
       ringRef.current.style.height = `${size}px`;
       ringRef.current.style.borderColor = hovered.current
-        ? "hsla(220, 10%, 75%, 0.25)"
+        ? "hsla(30, 5%, 35%, 0.3)"
         : "hsl(var(--foreground))";
       ringRef.current.style.backgroundColor = hovered.current
-        ? "hsla(220, 10%, 75%, 0.06)"
+        ? "hsla(30, 5%, 35%, 0.06)"
         : "transparent";
       ringRef.current.style.backdropFilter = hovered.current ? "blur(12px)" : "none";
 
-      // label
       const span = ringRef.current.firstElementChild as HTMLElement;
       if (span) {
         span.style.opacity = hovered.current && label.current ? "1" : "0";
@@ -48,7 +47,6 @@ const CustomCursor = () => {
     isMobile.current = window.matchMedia("(pointer: coarse)").matches;
     if (isMobile.current) return;
 
-    // hide default cursor
     document.documentElement.style.cursor = "none";
     const style = document.createElement("style");
     style.textContent = "*, *::before, *::after { cursor: none !important; }";
@@ -94,13 +92,11 @@ const CustomCursor = () => {
 
   return (
     <>
-      {/* Ring */}
       <div
         ref={ringRef}
         className="fixed top-0 left-0 z-[9999] pointer-events-none rounded-full border"
         style={{
           willChange: "transform, width, height",
-          mixBlendMode: "difference",
           transition: "width 0.35s cubic-bezier(0.23,1,0.32,1), height 0.35s cubic-bezier(0.23,1,0.32,1), border-color 0.3s ease, background-color 0.3s ease, backdrop-filter 0.3s ease",
           borderWidth: "1.5px",
           display: "flex",
@@ -113,16 +109,10 @@ const CustomCursor = () => {
           style={{ transition: "opacity 0.2s ease", opacity: 0 }}
         />
       </div>
-      {/* Dot */}
       <div
         ref={dotRef}
         className="fixed top-0 left-0 z-[9999] pointer-events-none rounded-full bg-foreground"
-        style={{
-          width: 6,
-          height: 6,
-          willChange: "transform",
-          mixBlendMode: "difference",
-        }}
+        style={{ width: 6, height: 6, willChange: "transform" }}
       />
     </>
   );
