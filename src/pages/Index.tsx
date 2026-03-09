@@ -35,11 +35,6 @@ const projects = [
   },
 ];
 
-const experience = [
-  { role: "Senior Full-Stack Developer", company: "TechCorp", period: "2022 — Present" },
-  { role: "Data Analyst", company: "DataFlow Inc.", period: "2020 — 2022" },
-  { role: "Web Developer", company: "StartupLab", period: "2018 — 2020" },
-];
 
 const socials = [
   { label: "GitHub", href: "https://github.com/InderjeetSingh4", icon: Github },
