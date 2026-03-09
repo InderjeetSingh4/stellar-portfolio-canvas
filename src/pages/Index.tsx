@@ -14,6 +14,9 @@ import GrainOverlay from "@/components/GrainOverlay";
 import Marquee from "@/components/Marquee";
 import SmoothScroll from "@/components/SmoothScroll";
 import ContactForm from "@/components/ContactForm";
+import Typewriter from "@/components/Typewriter";
+import AboutBento from "@/components/AboutBento";
+import ExperienceTimeline from "@/components/ExperienceTimeline";
 
 const projects = [
   {
@@ -32,11 +35,6 @@ const projects = [
   },
 ];
 
-const experience = [
-  { role: "Senior Full-Stack Developer", company: "TechCorp", period: "2022 — Present" },
-  { role: "Data Analyst", company: "DataFlow Inc.", period: "2020 — 2022" },
-  { role: "Web Developer", company: "StartupLab", period: "2018 — 2020" },
-];
 
 const socials = [
   { label: "GitHub", href: "https://github.com/InderjeetSingh4", icon: Github },
@@ -68,17 +66,23 @@ const Index = () => {
                 className="text-center mt-8 max-w-3xl mx-auto"
               >
                 <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight-custom text-foreground leading-[1.05]">
-                  Full-Stack Developer
-                  <span className="block text-muted-foreground">Data Analyst</span>
-                  <span className="block text-muted-foreground/60">&amp; Problem Solver</span>
+                  Inderjeet Singh
                 </h1>
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.6, duration: 0.8 }}
+                  className="mt-4 text-xl md:text-2xl lg:text-3xl font-medium tracking-tight-custom"
+                >
+                  <Typewriter />
+                </motion.div>
                 <motion.p
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.8, duration: 1 }}
-                  className="mt-6 text-muted-foreground text-base md:text-lg max-w-md mx-auto leading-relaxed"
+                  className="mt-6 text-muted-foreground text-base md:text-lg max-w-lg mx-auto leading-relaxed"
                 >
-                  Crafting elegant digital experiences through code, data, and design.
+                  Building scalable web architecture and data-driven systems. Currently pursuing a B.Tech in Artificial Intelligence and Data Science (Class of 2027).
                 </motion.p>
               </motion.div>
 
@@ -103,21 +107,14 @@ const Index = () => {
             <Marquee />
 
             {/* About */}
-            <section id="about" className="section-padding max-w-4xl mx-auto">
+            <section id="about" className="section-padding max-w-5xl mx-auto">
               <ScrollReveal>
-                <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-4">About</p>
+                <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-4">About & Expertise</p>
               </ScrollReveal>
-              <TextReveal as="h2" className="text-3xl md:text-4xl font-bold tracking-tight-custom text-foreground mb-8 flex flex-wrap">
+              <TextReveal as="h2" className="text-3xl md:text-4xl font-bold tracking-tight-custom text-foreground mb-10 flex flex-wrap">
                 Building at the intersection of design, code, and data.
               </TextReveal>
-              <ScrollReveal delay={0.15}>
-                <p className="text-muted-foreground leading-relaxed text-base md:text-lg max-w-2xl">
-                  I'm a full-stack developer and data analyst who transforms complex datasets into
-                  actionable insights and elegant interfaces. With expertise spanning modern web
-                  frameworks and statistical modeling, I bridge the gap between raw data and
-                  meaningful user experiences. Every project begins with curiosity and ends with precision.
-                </p>
-              </ScrollReveal>
+              <AboutBento />
             </section>
 
             {/* Projects */}
@@ -138,24 +135,12 @@ const Index = () => {
             {/* Experience */}
             <section id="experience" className="section-padding max-w-4xl mx-auto">
               <ScrollReveal>
-                <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-4">Career</p>
+                <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-4">Experience</p>
               </ScrollReveal>
               <TextReveal as="h2" className="text-3xl md:text-4xl font-bold tracking-tight-custom text-foreground mb-12 flex flex-wrap">
-                Experience and expertise.
+                Where I've contributed.
               </TextReveal>
-              <div className="space-y-0">
-                {experience.map((exp, i) => (
-                  <ScrollReveal key={exp.role} delay={i * 0.1}>
-                    <div className="flex items-center justify-between py-6 border-b border-border group cursor-default">
-                      <div>
-                        <h3 className="text-lg font-medium text-foreground group-hover:text-primary transition-colors duration-300">{exp.role}</h3>
-                        <p className="text-sm text-muted-foreground mt-1">{exp.company}</p>
-                      </div>
-                      <span className="text-sm text-muted-foreground">{exp.period}</span>
-                    </div>
-                  </ScrollReveal>
-                ))}
-              </div>
+              <ExperienceTimeline />
             </section>
 
             {/* Contact */}
