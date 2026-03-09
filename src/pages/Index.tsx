@@ -135,24 +135,12 @@ const Index = () => {
             {/* Experience */}
             <section id="experience" className="section-padding max-w-4xl mx-auto">
               <ScrollReveal>
-                <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-4">Career</p>
+                <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-4">Experience</p>
               </ScrollReveal>
               <TextReveal as="h2" className="text-3xl md:text-4xl font-bold tracking-tight-custom text-foreground mb-12 flex flex-wrap">
-                Experience and expertise.
+                Where I've contributed.
               </TextReveal>
-              <div className="space-y-0">
-                {experience.map((exp, i) => (
-                  <ScrollReveal key={exp.role} delay={i * 0.1}>
-                    <div className="flex items-center justify-between py-6 border-b border-border group cursor-default">
-                      <div>
-                        <h3 className="text-lg font-medium text-foreground group-hover:text-primary transition-colors duration-300">{exp.role}</h3>
-                        <p className="text-sm text-muted-foreground mt-1">{exp.company}</p>
-                      </div>
-                      <span className="text-sm text-muted-foreground">{exp.period}</span>
-                    </div>
-                  </ScrollReveal>
-                ))}
-              </div>
+              <ExperienceTimeline />
             </section>
 
             {/* Contact */}
