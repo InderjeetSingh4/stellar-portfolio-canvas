@@ -27,7 +27,7 @@ const Marquee = () => {
             style={{
               WebkitTextStroke: "1.5px hsl(var(--muted-foreground))",
               WebkitTextFillColor: "transparent",
-              opacity: 0.3,
+              opacity: 0.2,
             }}
           >
             {text}

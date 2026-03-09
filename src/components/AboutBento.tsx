@@ -8,9 +8,9 @@ const skills = [
 
 const AboutBento = () => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-5 gap-4 md:gap-6">
-      {/* Biography — spans 3 columns */}
-      <ScrollReveal className="md:col-span-3">
+    <div className="grid grid-cols-1 md:grid-cols-12 gap-5 md:gap-6">
+      {/* Biography — spans 7 columns */}
+      <ScrollReveal className="md:col-span-7">
         <div className="glass-card p-8 md:p-10 h-full">
           <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-4">Biography</p>
           <p className="text-muted-foreground leading-relaxed text-base md:text-lg">
@@ -21,24 +21,56 @@ const AboutBento = () => {
         </div>
       </ScrollReveal>
 
-      {/* Core Arsenal — spans 2 columns */}
-      <ScrollReveal delay={0.1} className="md:col-span-2">
+      {/* Core Arsenal — spans 5 columns */}
+      <ScrollReveal delay={0.1} className="md:col-span-5">
         <div className="glass-card p-8 md:p-10 h-full">
           <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-6">Core Arsenal</p>
           <div className="flex flex-wrap gap-2">
             {skills.map((skill, i) => (
               <motion.span
                 key={skill}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, scale: 0.5, y: 15 }}
+                whileInView={{ opacity: 1, scale: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.04, duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
+                transition={{
+                  delay: 0.1 + i * 0.06,
+                  duration: 0.5,
+                  type: "spring",
+                  stiffness: 200,
+                  damping: 15,
+                }}
                 className="px-3 py-1.5 text-xs font-medium text-muted-foreground border border-border rounded-full hover:border-foreground/30 hover:text-foreground transition-colors duration-300"
               >
                 {skill}
               </motion.span>
             ))}
           </div>
+        </div>
+      </ScrollReveal>
+
+      {/* Education — full width accent strip */}
+      <ScrollReveal delay={0.2} className="md:col-span-4">
+        <div className="glass-card p-8 md:p-10 h-full flex flex-col justify-center">
+          <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-3">Education</p>
+          <p className="text-foreground font-semibold text-lg tracking-tight-custom">B.Tech — AI & Data Science</p>
+          <p className="text-sm text-muted-foreground mt-1">Class of 2027</p>
+        </div>
+      </ScrollReveal>
+
+      <ScrollReveal delay={0.25} className="md:col-span-4">
+        <div className="glass-card p-8 md:p-10 h-full flex flex-col justify-center">
+          <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-3">Focus Areas</p>
+          <p className="text-foreground font-medium text-base leading-relaxed">
+            Full-Stack Development, DevOps, Data Pipelines, Computer Vision
+          </p>
+        </div>
+      </ScrollReveal>
+
+      <ScrollReveal delay={0.3} className="md:col-span-4">
+        <div className="glass-card p-8 md:p-10 h-full flex flex-col justify-center">
+          <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-3">Location</p>
+          <p className="text-foreground font-medium text-base">India 🇮🇳</p>
+          <p className="text-sm text-muted-foreground mt-1">Open to remote work worldwide</p>
         </div>
       </ScrollReveal>
     </div>
