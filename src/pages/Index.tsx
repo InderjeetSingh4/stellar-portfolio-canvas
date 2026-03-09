@@ -66,17 +66,23 @@ const Index = () => {
                 className="text-center mt-8 max-w-3xl mx-auto"
               >
                 <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight-custom text-foreground leading-[1.05]">
-                  Full-Stack Developer
-                  <span className="block text-muted-foreground">Data Analyst</span>
-                  <span className="block text-muted-foreground/60">&amp; Problem Solver</span>
+                  Inderjeet Singh
                 </h1>
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.6, duration: 0.8 }}
+                  className="mt-4 text-xl md:text-2xl lg:text-3xl font-medium tracking-tight-custom"
+                >
+                  <Typewriter />
+                </motion.div>
                 <motion.p
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.8, duration: 1 }}
-                  className="mt-6 text-muted-foreground text-base md:text-lg max-w-md mx-auto leading-relaxed"
+                  className="mt-6 text-muted-foreground text-base md:text-lg max-w-lg mx-auto leading-relaxed"
                 >
-                  Crafting elegant digital experiences through code, data, and design.
+                  Building scalable web architecture and data-driven systems. Currently pursuing a B.Tech in Artificial Intelligence and Data Science (Class of 2027).
                 </motion.p>
               </motion.div>
 
