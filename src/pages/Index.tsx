@@ -107,21 +107,14 @@ const Index = () => {
             <Marquee />
 
             {/* About */}
-            <section id="about" className="section-padding max-w-4xl mx-auto">
+            <section id="about" className="section-padding max-w-5xl mx-auto">
               <ScrollReveal>
-                <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-4">About</p>
+                <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-4">About & Expertise</p>
               </ScrollReveal>
-              <TextReveal as="h2" className="text-3xl md:text-4xl font-bold tracking-tight-custom text-foreground mb-8 flex flex-wrap">
+              <TextReveal as="h2" className="text-3xl md:text-4xl font-bold tracking-tight-custom text-foreground mb-10 flex flex-wrap">
                 Building at the intersection of design, code, and data.
               </TextReveal>
-              <ScrollReveal delay={0.15}>
-                <p className="text-muted-foreground leading-relaxed text-base md:text-lg max-w-2xl">
-                  I'm a full-stack developer and data analyst who transforms complex datasets into
-                  actionable insights and elegant interfaces. With expertise spanning modern web
-                  frameworks and statistical modeling, I bridge the gap between raw data and
-                  meaningful user experiences. Every project begins with curiosity and ends with precision.
-                </p>
-              </ScrollReveal>
+              <AboutBento />
             </section>
 
             {/* Projects */}
