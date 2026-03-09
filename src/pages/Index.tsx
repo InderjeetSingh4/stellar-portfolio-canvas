@@ -14,6 +14,9 @@ import GrainOverlay from "@/components/GrainOverlay";
 import Marquee from "@/components/Marquee";
 import SmoothScroll from "@/components/SmoothScroll";
 import ContactForm from "@/components/ContactForm";
+import Typewriter from "@/components/Typewriter";
+import AboutBento from "@/components/AboutBento";
+import ExperienceTimeline from "@/components/ExperienceTimeline";
 
 const projects = [
   {
