@@ -3,8 +3,8 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const roles = [
   "Web Developer",
-  "DevOps Engineer",
-  "Kafka Admin",
+  "Full-Stack Developer",
+  "Data Analyst",
 ];
 
 const Typewriter = () => {
