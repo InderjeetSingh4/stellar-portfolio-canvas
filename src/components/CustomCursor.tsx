@@ -24,10 +24,8 @@ const CustomCursor = () => {
       ringRef.current.style.borderColor = hovered.current
         ? "hsla(30, 5%, 35%, 0.3)"
         : "hsl(var(--foreground))";
-      ringRef.current.style.backgroundColor = hovered.current
-        ? "hsla(30, 5%, 35%, 0.06)"
-        : "transparent";
-      ringRef.current.style.backdropFilter = hovered.current ? "blur(12px)" : "none";
+      ringRef.current.style.backgroundColor = "transparent";
+      ringRef.current.style.backdropFilter = "none";
 
       const span = ringRef.current.firstElementChild as HTMLElement;
       if (span) {
