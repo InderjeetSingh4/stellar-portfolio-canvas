@@ -11,8 +11,8 @@ const Magnetic = ({ children, className = "", strength = 0.3 }: MagneticProps) =
   const ref = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
 
-  const x = useSpring(0, { stiffness: 150, damping: 15 });
-  const y = useSpring(0, { stiffness: 150, damping: 15 });
+  const x = useSpring(0, { stiffness: 200, damping: 20, mass: 0.5 });
+  const y = useSpring(0, { stiffness: 200, damping: 20, mass: 0.5 });
 
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!ref.current) return;
@@ -35,8 +35,8 @@ const Magnetic = ({ children, className = "", strength = 0.3 }: MagneticProps) =
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={handleMouseLeave}
-      style={{ x, y }}
-      className={`inline-block ${className}`}
+      style={{ x, y, willChange: "transform" }}
+      className={`inline-block backface-visibility-hidden ${className}`}
     >
       {children}
     </motion.div>
