@@ -63,6 +63,7 @@ const ExperienceTimeline = () => {
                   </a>
                 )}
               </div>
+            </div>
           </ScrollReveal>
         ))}
       </div>
