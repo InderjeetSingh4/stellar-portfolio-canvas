@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { ExternalLink } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 
 const experiences = [
@@ -7,6 +8,7 @@ const experiences = [
     company: "Zeetron Network Pvt. Ltd.",
     description:
       "Conducted research and engineering tasks, applying core technical principles to real-world networking and development challenges.",
+    link: "https://drive.google.com/file/d/1nfOd0dXvjPmtN0yQSAY0Xydl5N28Mhyq/view?usp=drive_link",
   },
   {
     role: "Full-Stack Developer",
@@ -50,6 +52,16 @@ const ExperienceTimeline = () => {
                 <h3 className="text-lg font-medium text-foreground">{exp.role}</h3>
                 <p className="text-sm text-muted-foreground mt-1 mb-3">{exp.company}</p>
                 <p className="text-sm text-muted-foreground/80 leading-relaxed">{exp.description}</p>
+                {exp.link && (
+                  <a
+                    href={exp.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 mt-4 px-4 py-2 text-xs font-medium tracking-wide text-foreground border border-border rounded-md hover:bg-accent hover:text-accent-foreground transition-colors duration-300"
+                  >
+                    View Live <ExternalLink size={14} />
+                  </a>
+                )}
               </div>
             </div>
           </ScrollReveal>
