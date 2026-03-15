@@ -52,7 +52,16 @@ const ExperienceTimeline = () => {
                 <h3 className="text-lg font-medium text-foreground">{exp.role}</h3>
                 <p className="text-sm text-muted-foreground mt-1 mb-3">{exp.company}</p>
                 <p className="text-sm text-muted-foreground/80 leading-relaxed">{exp.description}</p>
-              </div>
+                {exp.link && (
+                  <a
+                    href={exp.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 mt-4 px-4 py-2 text-xs font-medium tracking-wide text-foreground border border-border rounded-md hover:bg-accent hover:text-accent-foreground transition-colors duration-300"
+                  >
+                    View Live <ExternalLink size={14} />
+                  </a>
+                )}
             </div>
           </ScrollReveal>
         ))}
