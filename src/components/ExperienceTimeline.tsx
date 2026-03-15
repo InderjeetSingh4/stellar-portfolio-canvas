@@ -62,7 +62,7 @@ const ExperienceTimeline = () => {
                     View Live <ExternalLink size={14} />
                   </a>
                 )}
-            </div>
+              </div>
           </ScrollReveal>
         ))}
       </div>
