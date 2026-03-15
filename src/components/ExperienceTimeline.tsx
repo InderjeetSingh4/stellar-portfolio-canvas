@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { ExternalLink } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 
 const experiences = [
@@ -7,6 +8,7 @@ const experiences = [
     company: "Zeetron Network Pvt. Ltd.",
     description:
       "Conducted research and engineering tasks, applying core technical principles to real-world networking and development challenges.",
+    link: "https://drive.google.com/file/d/1nfOd0dXvjPmtN0yQSAY0Xydl5N28Mhyq/view?usp=drive_link",
   },
   {
     role: "Full-Stack Developer",
