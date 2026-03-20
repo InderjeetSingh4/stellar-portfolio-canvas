@@ -3,7 +3,7 @@ import ScrollReveal from "./ScrollReveal";
 
 const skills = [
   "Python", "Pandas", "Numpy", "React", "Tailwind",
-  "Supabase", "Vercel", "Kafka", "OpenCV", "YOLO",
+  "Supabase", "Vercel", "YOLO",
 ];
 
 const AboutBento = () => {
