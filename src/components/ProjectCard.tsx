@@ -11,6 +11,7 @@ interface ProjectCardProps {
   tags: string[];
   visual: "dashboard" | "vision";
   index: number;
+  link?: string;
 }
 
 /* Minimalist dashboard wireframe */
