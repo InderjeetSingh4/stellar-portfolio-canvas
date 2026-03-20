@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { ExternalLink } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 
 const certifications = [
@@ -6,11 +7,13 @@ const certifications = [
     title: "5-Day AI Agents Intensive",
     issuer: "Google & Kaggle",
     date: "December 2025",
+    link: "https://drive.google.com/file/d/10aV5Y9a-cGqPXumojDTOsrSy20CQ-ie5/view?usp=drive_link",
   },
   {
     title: "Introduction to Generative AI",
     issuer: "Google Cloud & Simplilearn",
     date: "November 2025",
+    link: "https://drive.google.com/file/d/1yqIYGkAVicDu_P8iMM-5ceCgxJxIvQdk/view?usp=drive_link",
   },
 ];
 
