@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { ExternalLink } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 
 const certifications = [
@@ -6,11 +7,13 @@ const certifications = [
     title: "5-Day AI Agents Intensive",
     issuer: "Google & Kaggle",
     date: "December 2025",
+    link: "https://drive.google.com/file/d/10aV5Y9a-cGqPXumojDTOsrSy20CQ-ie5/view?usp=drive_link",
   },
   {
     title: "Introduction to Generative AI",
     issuer: "Google Cloud & Simplilearn",
     date: "November 2025",
+    link: "https://drive.google.com/file/d/1yqIYGkAVicDu_P8iMM-5ceCgxJxIvQdk/view?usp=drive_link",
   },
 ];
 
@@ -34,6 +37,15 @@ const Certifications = () => {
               <span className="text-xs text-muted-foreground/70 font-mono tracking-wide shrink-0">
                 {cert.date}
               </span>
+              <a
+                href={cert.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-xs font-medium text-muted-foreground hover:text-foreground border border-border rounded-full px-3 py-1 transition-colors duration-300 hover:bg-accent shrink-0"
+              >
+                View Certificate
+                <ExternalLink size={12} />
+              </a>
             </div>
           </motion.div>
         </ScrollReveal>
