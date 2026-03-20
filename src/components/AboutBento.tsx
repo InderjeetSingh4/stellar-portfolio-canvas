@@ -3,7 +3,7 @@ import ScrollReveal from "./ScrollReveal";
 
 const skills = [
   "Python", "Pandas", "Numpy", "React", "Tailwind",
-  "Supabase", "Vercel", "Kafka", "OpenCV", "YOLO",
+  "Supabase", "Vercel", "YOLO",
 ];
 
 const AboutBento = () => {
@@ -61,7 +61,7 @@ const AboutBento = () => {
         <div className="glass-card p-8 md:p-10 h-full flex flex-col justify-center">
           <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-3">Focus Areas</p>
           <p className="text-foreground font-medium text-base leading-relaxed">
-            Full-Stack Development, DevOps, Data Pipelines, Computer Vision
+            Full-Stack Development, Data Analyst
           </p>
         </div>
       </ScrollReveal>
