@@ -1,5 +1,7 @@
 import { useRef, useCallback } from "react";
-import { motion, useScroll, useTransform, useMotionValueEvent } from "framer-motion";
+import { motion, useScroll, useMotionValueEvent } from "framer-motion";
+import { useState } from "react";
+import { ExternalLink } from "lucide-react";
 import { useState } from "react";
 
 interface ProjectCardProps {
