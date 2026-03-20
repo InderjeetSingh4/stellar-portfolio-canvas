@@ -31,15 +31,16 @@ const ResumeButton = () => {
       rel="noopener noreferrer"
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      style={{ x, y }}
-      whileTap={{ scale: 0.95 }}
-      className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium tracking-wide text-foreground transition-colors duration-300"
-      css-style={{
+      style={{
+        x,
+        y,
         background: "hsla(var(--glass-bg), 0.35)",
         border: "1px solid hsla(var(--glass-border), 0.4)",
         backdropFilter: "blur(12px)",
         WebkitBackdropFilter: "blur(12px)",
       }}
+      whileTap={{ scale: 0.95 }}
+      className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium tracking-wide text-foreground transition-colors duration-300"
     >
       <span>Resume</span>
       <svg
