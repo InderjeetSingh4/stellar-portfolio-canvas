@@ -37,6 +37,15 @@ const Certifications = () => {
               <span className="text-xs text-muted-foreground/70 font-mono tracking-wide shrink-0">
                 {cert.date}
               </span>
+              <a
+                href={cert.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-xs font-medium text-muted-foreground hover:text-foreground border border-border rounded-full px-3 py-1 transition-colors duration-300 hover:bg-accent shrink-0"
+              >
+                View Certificate
+                <ExternalLink size={12} />
+              </a>
             </div>
           </motion.div>
         </ScrollReveal>
