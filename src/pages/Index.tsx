@@ -30,8 +30,9 @@ const projects = [
     title: "Vision Pro",
     subtitle: "Advanced Computer Vision System",
     description: "A high-performance object detection application capable of real-time processing and live camera streaming. Built with a focus on accuracy and seamless video frame handling.",
-    tags: ["Python", "OpenCV", "YOLO", "Machine Learning"],
+    tags: ["Python", "React", "Tailwind CSS", "YOLO", "Machine Learning"],
     visual: "vision" as const,
+    link: "https://visionpro-app.vercel.app/",
   },
 ];
 
