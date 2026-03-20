@@ -202,6 +202,18 @@ const ProjectCard = ({ title, subtitle, description, tags, visual, index, link }
                 {tag}
               </span>
             ))}
+            {link && (
+              <a
+                href={link}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className="ml-auto inline-flex items-center gap-1.5 text-xs font-medium text-muted-foreground hover:text-foreground border border-border rounded-full px-3 py-1 transition-colors duration-300 hover:bg-accent"
+              >
+                View Live
+                <ExternalLink size={12} />
+              </a>
+            )}
           </div>
         </div>
       </div>
