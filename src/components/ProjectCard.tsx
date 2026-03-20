@@ -1,7 +1,7 @@
 import { useRef, useCallback, useState } from "react";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { ExternalLink } from "lucide-react";
-import { useState } from "react";
+
 
 interface ProjectCardProps {
   title: string;
