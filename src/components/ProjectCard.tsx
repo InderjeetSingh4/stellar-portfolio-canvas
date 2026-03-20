@@ -93,7 +93,7 @@ const VisionVisual = () => (
   </div>
 );
 
-const ProjectCard = ({ title, subtitle, description, tags, visual, index }: ProjectCardProps) => {
+const ProjectCard = ({ title, subtitle, description, tags, visual, index, link }: ProjectCardProps) => {
   const cardRef = useRef<HTMLDivElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
   const glowRef = useRef<HTMLDivElement>(null);
