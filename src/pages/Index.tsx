@@ -154,6 +154,21 @@ const Index = () => {
               </div>
             </section>
 
+            {/* Certifications */}
+            <section id="certifications" className="section-padding">
+              <div className="max-w-7xl w-full mx-auto">
+                <ScrollReveal>
+                  <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-4">Certifications & Credentials</p>
+                </ScrollReveal>
+                <TextReveal as="h2" className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight-custom text-foreground mb-14 flex flex-wrap">
+                  Validated expertise.
+                </TextReveal>
+                <div className="max-w-4xl">
+                  <Certifications />
+                </div>
+              </div>
+            </section>
+
             {/* Contact */}
             <section id="contact" className="section-padding pb-32">
               <div className="max-w-7xl w-full mx-auto">
