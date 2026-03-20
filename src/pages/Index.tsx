@@ -17,6 +17,7 @@ import ContactForm from "@/components/ContactForm";
 import Typewriter from "@/components/Typewriter";
 import AboutBento from "@/components/AboutBento";
 import ExperienceTimeline from "@/components/ExperienceTimeline";
+import Certifications from "@/components/Certifications";
 
 const projects = [
   {
