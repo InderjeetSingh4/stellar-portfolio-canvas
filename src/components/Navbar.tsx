@@ -26,7 +26,7 @@ const ResumeButton = () => {
   return (
     <motion.a
       ref={ref}
-      href="https://drive.google.com/file/d/1BvynBA6M4QLlECahaVZlpJsdRWoBupC0/view?usp=drive_link"
+      href="https://drive.google.com/file/d/1-9QZx738L2cJ1iyi-vGd90MOIoNuSRF4/view?usp=drive_link"
       target="_blank"
       rel="noopener noreferrer"
       onMouseMove={handleMouseMove}
