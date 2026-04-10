@@ -19,8 +19,7 @@
 
 ## 🧠 About Me
 
-![GitHub Stats](https://github-readme-stats-git-masterrstaa-rickstaa.vercel.app/api?username=InderjeetSingh4&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0d1117)
-
+<img align="right" width="300" src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=InderjeetSingh4&theme=tokyonight" />
 
 Hey there! I'm **Inderjeet Singh**, a passionate **Full-Stack Developer** and **Data Analyst** currently pursuing a **B.Tech in Artificial Intelligence and Data Science**.
 
