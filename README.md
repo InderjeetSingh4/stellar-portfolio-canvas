@@ -19,7 +19,7 @@
 
 ## 🧠 About Me
 
-<img align="right" width="300" src="https://github-readme-stats.vercel.app/api?username=YOUR_USERNAME&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0d1117" />
+<img align="right" width="300" src="https://github-readme-stats.vercel.app/api?username=InderjeetSingh4&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0d1117" />
 
 Hey there! I'm **Inderjeet Singh**, a passionate **Full-Stack Developer** and **Data Analyst** currently pursuing a **B.Tech in Artificial Intelligence and Data Science**.
 
