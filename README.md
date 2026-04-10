@@ -19,8 +19,7 @@
 
 ## 🧠 About Me
 
-<img align="right" width="300" src="https://github-readme-stats.vercel.app/api?username=InderjeetSingh4&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0d1117" />
-
+![GitHub Stats](https://github-readme-stats-git-masterrstaa-rickstaa.vercel.app/api?username=InderjeetSingh4&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0d1117)
 Hey there! I'm **Inderjeet Singh**, a passionate **Full-Stack Developer** and **Data Analyst** currently pursuing a **B.Tech in Artificial Intelligence and Data Science**.
 
 I specialize in:
@@ -212,9 +211,8 @@ This portfolio is optimized for **edge deployment** and works out of the box wit
 
 <div align="center">
 
-![GitHub Streak](https://github-readme-streak-stats.herokuapp.com/?user=YOUR_USERNAME&theme=tokyonight&hide_border=true&background=0d1117)
-
-![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=YOUR_USERNAME&layout=compact&theme=tokyonight&hide_border=true&bg_color=0d1117)
+![GitHub Streak](https://streak-stats.demolab.com/?user=InderjeetSingh4&theme=tokyonight&hide_border=true&background=0d1117)
+![Top Languages](https://github-readme-stats-git-masterrstaa-rickstaa.vercel.app/api/top-langs/?username=InderjeetSingh4&layout=compact&theme=tokyonight&hide_border=true&bg_color=0d1117)
 
 </div>
 
