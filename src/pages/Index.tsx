@@ -27,6 +27,7 @@ const projects = [
     tags: ["Python", "Streamlit", "Pandas", "Plotly"],
     visual: "dashboard" as const,
     featured: true,
+    link: "https://paloaltoattrition.streamlit.app/",
   },
   {
     title: "Competitor Intelligence ETL Pipeline",
@@ -41,6 +42,7 @@ const projects = [
     description: "Comprehensive data analytics project uncovering operational trends and metrics.",
     tags: ["Data Analytics", "Python", "Visualization"],
     visual: "dashboard" as const,
+    link: "https://ferry-analytics-i2sepxvk8ppeubc5erb6pq.streamlit.app/",
   },
   {
     title: "Site Stat",
@@ -48,6 +50,7 @@ const projects = [
     description: "A robust web application designed for comprehensive data tracking and management. Engineered with secure backend integration to handle real-time statistics, temporary access links, and seamless data entry.",
     tags: ["React", "Tailwind CSS", "Supabase", "Vercel"],
     visual: "dashboard" as const,
+    link: "https://nature1.online",
   },
   {
     title: "Vision Pro",
