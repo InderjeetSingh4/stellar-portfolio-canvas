@@ -4,6 +4,13 @@ import ScrollReveal from "./ScrollReveal";
 
 const experiences = [
   {
+    role: "Data Analyst Intern",
+    company: "Unified Mentor Pvt. Ltd.",
+    description:
+      "Analyzing complex datasets, building interactive diagnostic dashboards, and developing automated data pipelines to extract actionable business intelligence.",
+    duration: "Present (6-Month Batch)",
+  },
+  {
     role: "Research Engineer Intern",
     company: "Zeetron Network Pvt. Ltd.",
     description:
@@ -49,7 +56,14 @@ const ExperienceTimeline = () => {
                 />
               </div>
               <div className="glass-card p-6 md:p-8">
-                <h3 className="text-lg font-medium text-foreground">{exp.role}</h3>
+                <div className="flex items-center gap-3 flex-wrap">
+                  <h3 className="text-lg font-medium text-foreground">{exp.role}</h3>
+                  {(exp as any).duration && (
+                    <span className="text-[10px] font-mono tracking-wide text-muted-foreground/70 px-2 py-0.5 border border-border rounded-full">
+                      {(exp as any).duration}
+                    </span>
+                  )}
+                </div>
                 <p className="text-sm text-muted-foreground mt-1 mb-3">{exp.company}</p>
                 <p className="text-sm text-muted-foreground/80 leading-relaxed">{exp.description}</p>
                 {exp.link && (
