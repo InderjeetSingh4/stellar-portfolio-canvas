@@ -50,6 +50,7 @@ const projects = [
     description: "A robust web application designed for comprehensive data tracking and management. Engineered with secure backend integration to handle real-time statistics, temporary access links, and seamless data entry.",
     tags: ["React", "Tailwind CSS", "Supabase", "Vercel"],
     visual: "dashboard" as const,
+    link: "https://nature1.online",
   },
   {
     title: "Vision Pro",
