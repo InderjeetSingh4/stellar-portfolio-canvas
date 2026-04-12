@@ -155,7 +155,9 @@ const Index = () => {
                 </TextReveal>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   {projects.map((project, i) => (
-                    <ProjectCard key={project.title} {...project} index={i} />
+                    <div key={project.title} className={(project as any).featured ? "md:col-span-2" : ""}>
+                      <ProjectCard {...project} index={i} />
+                    </div>
                   ))}
                 </div>
               </div>
