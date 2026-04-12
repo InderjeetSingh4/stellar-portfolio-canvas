@@ -28,6 +28,7 @@ const projects = [
     visual: "dashboard" as const,
     featured: true,
     link: "https://paloaltoattrition.streamlit.app/",
+  },
   {
     title: "Competitor Intelligence ETL Pipeline",
     subtitle: "Automated Data Pipeline",
@@ -41,6 +42,7 @@ const projects = [
     description: "Comprehensive data analytics project uncovering operational trends and metrics.",
     tags: ["Data Analytics", "Python", "Visualization"],
     visual: "dashboard" as const,
+    link: "https://ferry-analytics-i2sepxvk8ppeubc5erb6pq.streamlit.app/",
   },
   {
     title: "Site Stat",
