@@ -4,6 +4,13 @@ import ScrollReveal from "./ScrollReveal";
 
 const experiences = [
   {
+    role: "Data Analyst Intern",
+    company: "Unified Mentor Pvt. Ltd.",
+    description:
+      "Analyzing complex datasets, building interactive diagnostic dashboards, and developing automated data pipelines to extract actionable business intelligence.",
+    duration: "Present (6-Month Batch)",
+  },
+  {
     role: "Research Engineer Intern",
     company: "Zeetron Network Pvt. Ltd.",
     description:

@@ -21,6 +21,28 @@ import Certifications from "@/components/Certifications";
 
 const projects = [
   {
+    title: "Workforce Attrition Intelligence",
+    subtitle: "Diagnostic HR Analytics Dashboard",
+    description: "A diagnostic HR analytics dashboard for Palo Alto Networks. Processed 1,470+ employee records to identify high-risk turnover hotspots and overtime impacts.",
+    tags: ["Python", "Streamlit", "Pandas", "Plotly"],
+    visual: "dashboard" as const,
+    featured: true,
+  },
+  {
+    title: "Competitor Intelligence ETL Pipeline",
+    subtitle: "Automated Data Pipeline",
+    description: "An automated data pipeline that extracts competitive intelligence from web layers, transforms the data, and loads it into a structured relational database for querying.",
+    tags: ["Python", "SQL", "ETL", "Web Scraping"],
+    visual: "dashboard" as const,
+  },
+  {
+    title: "Ferry Analytics",
+    subtitle: "Operational Data Analytics",
+    description: "Comprehensive data analytics project uncovering operational trends and metrics.",
+    tags: ["Data Analytics", "Python", "Visualization"],
+    visual: "dashboard" as const,
+  },
+  {
     title: "Site Stat",
     subtitle: "Full-Stack Data Tracking & Management",
     description: "A robust web application designed for comprehensive data tracking and management. Engineered with secure backend integration to handle real-time statistics, temporary access links, and seamless data entry.",
