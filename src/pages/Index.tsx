@@ -27,7 +27,7 @@ const projects = [
     tags: ["Python", "Streamlit", "Pandas", "Plotly"],
     visual: "dashboard" as const,
     featured: true,
-  },
+    link: "https://paloaltoattrition.streamlit.app/",
   {
     title: "Competitor Intelligence ETL Pipeline",
     subtitle: "Automated Data Pipeline",
