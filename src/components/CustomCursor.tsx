@@ -3,7 +3,9 @@ import { useEffect, useRef, useCallback } from "react";
 const CustomCursor = () => {
   const ringRef = useRef<HTMLDivElement>(null);
   const dotRef = useRef<HTMLDivElement>(null);
+  const glowRef = useRef<HTMLDivElement>(null);
   const pos = useRef({ x: -100, y: -100 });
+  const glowPos = useRef({ x: -100, y: -100 });
   const target = useRef({ x: -100, y: -100 });
   const hovered = useRef(false);
   const label = useRef("");
@@ -13,8 +15,10 @@ const CustomCursor = () => {
   const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
 
   const tick = useCallback(() => {
-    pos.current.x = lerp(pos.current.x, target.current.x, 0.15);
-    pos.current.y = lerp(pos.current.y, target.current.y, 0.15);
+    pos.current.x = lerp(pos.current.x, target.current.x, 0.18);
+    pos.current.y = lerp(pos.current.y, target.current.y, 0.18);
+    glowPos.current.x = lerp(glowPos.current.x, target.current.x, 0.08);
+    glowPos.current.y = lerp(glowPos.current.y, target.current.y, 0.08);
 
     if (ringRef.current) {
       const size = hovered.current ? 72 : 28;
@@ -22,10 +26,9 @@ const CustomCursor = () => {
       ringRef.current.style.width = `${size}px`;
       ringRef.current.style.height = `${size}px`;
       ringRef.current.style.borderColor = hovered.current
-        ? "hsla(30, 5%, 35%, 0.3)"
-        : "hsl(var(--foreground))";
+        ? "hsla(211, 100%, 60%, 0.6)"
+        : "hsla(0, 0%, 100%, 0.85)";
       ringRef.current.style.backgroundColor = "transparent";
-      ringRef.current.style.backdropFilter = "none";
 
       const span = ringRef.current.firstElementChild as HTMLElement;
       if (span) {
@@ -36,6 +39,14 @@ const CustomCursor = () => {
 
     if (dotRef.current) {
       dotRef.current.style.transform = `translate3d(${target.current.x - 3}px, ${target.current.y - 3}px, 0)`;
+    }
+
+    if (glowRef.current) {
+      const size = hovered.current ? 220 : 140;
+      glowRef.current.style.transform = `translate3d(${glowPos.current.x - size / 2}px, ${glowPos.current.y - size / 2}px, 0)`;
+      glowRef.current.style.width = `${size}px`;
+      glowRef.current.style.height = `${size}px`;
+      glowRef.current.style.opacity = hovered.current ? "0.55" : "0.32";
     }
 
     rafId.current = requestAnimationFrame(tick);
@@ -90,12 +101,29 @@ const CustomCursor = () => {
 
   return (
     <>
+      {/* Neon glow halo */}
+      <div
+        ref={glowRef}
+        className="fixed top-0 left-0 z-[9998] pointer-events-none rounded-full"
+        style={{
+          width: 140,
+          height: 140,
+          background:
+            "radial-gradient(circle, hsla(211, 100%, 55%, 0.55) 0%, hsla(211, 100%, 55%, 0.15) 35%, transparent 70%)",
+          filter: "blur(20px)",
+          willChange: "transform, opacity, width, height",
+          transition: "opacity 0.35s ease, width 0.35s ease, height 0.35s ease",
+          mixBlendMode: "screen",
+        }}
+      />
+      {/* Ring */}
       <div
         ref={ringRef}
         className="fixed top-0 left-0 z-[9999] pointer-events-none rounded-full border"
         style={{
           willChange: "transform, width, height",
-          transition: "width 0.35s cubic-bezier(0.23,1,0.32,1), height 0.35s cubic-bezier(0.23,1,0.32,1), border-color 0.3s ease, background-color 0.3s ease, backdrop-filter 0.3s ease",
+          transition:
+            "width 0.35s cubic-bezier(0.23,1,0.32,1), height 0.35s cubic-bezier(0.23,1,0.32,1), border-color 0.3s ease, background-color 0.3s ease",
           borderWidth: "1.5px",
           display: "flex",
           alignItems: "center",
@@ -107,10 +135,17 @@ const CustomCursor = () => {
           style={{ transition: "opacity 0.2s ease", opacity: 0 }}
         />
       </div>
+      {/* Dot */}
       <div
         ref={dotRef}
-        className="fixed top-0 left-0 z-[9999] pointer-events-none rounded-full bg-foreground"
-        style={{ width: 6, height: 6, willChange: "transform" }}
+        className="fixed top-0 left-0 z-[9999] pointer-events-none rounded-full"
+        style={{
+          width: 6,
+          height: 6,
+          willChange: "transform",
+          background: "hsl(var(--foreground))",
+          boxShadow: "0 0 12px hsla(211, 100%, 60%, 0.8)",
+        }}
       />
     </>
   );

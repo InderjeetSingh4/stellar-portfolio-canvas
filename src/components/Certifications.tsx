@@ -25,27 +25,29 @@ const Certifications = () => {
           <motion.div
             whileHover={{ x: 6 }}
             transition={{ type: "spring", stiffness: 300, damping: 25 }}
-            className="group glass-card px-8 py-6 cursor-default transition-shadow duration-300 hover:shadow-[inset_0_0_20px_hsla(30,8%,70%,0.12)]"
+            className="group glass-card glass-card-hover px-8 py-6 cursor-default"
           >
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
               <div>
-                <h3 className="text-base font-semibold text-[#1C1B1A] tracking-tight-custom">
+                <h3 className="text-base font-semibold text-foreground tracking-tight-custom">
                   {cert.title}
                 </h3>
                 <p className="text-sm text-muted-foreground mt-0.5">{cert.issuer}</p>
               </div>
-              <span className="text-xs text-muted-foreground/70 font-mono tracking-wide shrink-0">
-                {cert.date}
-              </span>
-              <a
-                href={cert.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-xs font-medium text-muted-foreground hover:text-foreground border border-border rounded-full px-3 py-1 transition-colors duration-300 hover:bg-accent shrink-0"
-              >
-                View Certificate
-                <ExternalLink size={12} />
-              </a>
+              <div className="flex items-center gap-3 shrink-0">
+                <span className="text-xs text-muted-foreground/70 font-mono tracking-wide">
+                  {cert.date}
+                </span>
+                <a
+                  href={cert.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-xs font-medium text-foreground border border-primary/40 bg-primary/10 rounded-full px-3 py-1 transition-all duration-300 hover:bg-primary/20 hover:border-primary/60"
+                >
+                  View Certificate
+                  <ExternalLink size={12} />
+                </a>
+              </div>
             </div>
           </motion.div>
         </ScrollReveal>
