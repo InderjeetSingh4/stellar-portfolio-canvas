@@ -29,14 +29,14 @@ function Particles({ count = 600 }) {
         <bufferAttribute attach="attributes-position" count={count} array={positions} itemSize={3} />
         <bufferAttribute attach="attributes-size" count={count} array={sizes} itemSize={1} />
       </bufferGeometry>
-      <pointsMaterial size={0.02} color="#a09080" transparent opacity={0.25} sizeAttenuation depthWrite={false} />
+      <pointsMaterial size={0.02} color="#7aa8ff" transparent opacity={0.35} sizeAttenuation depthWrite={false} />
     </points>
   );
 }
 
 const ParticleField = () => {
   return (
-    <div className="fixed inset-0 -z-10">
+    <div className="fixed inset-0 -z-10 pointer-events-none">
       <Canvas
         camera={{ position: [0, 0, 5], fov: 60 }}
         dpr={[1, 1.5]}
@@ -48,7 +48,7 @@ const ParticleField = () => {
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          background: `radial-gradient(ellipse at 50% 50%, transparent 0%, hsl(var(--background)) 70%)`,
+          background: `radial-gradient(ellipse at 50% 50%, transparent 0%, #08090B 75%)`,
         }}
       />
     </div>
