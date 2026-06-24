@@ -18,6 +18,7 @@ import Typewriter from "@/components/Typewriter";
 import AboutBento from "@/components/AboutBento";
 import ExperienceTimeline from "@/components/ExperienceTimeline";
 import Certifications from "@/components/Certifications";
+import HeroGradientMesh from "@/components/HeroGradientMesh";
 
 const projects = [
   {
@@ -83,48 +84,59 @@ const Index = () => {
             <Navbar />
 
             {/* Hero */}
-            <section className="relative min-h-screen flex flex-col items-center justify-center section-padding pt-32">
-              <div className="max-w-7xl w-full mx-auto flex flex-col items-center">
+            <section className="relative min-h-screen flex flex-col items-center justify-center section-padding pt-32 overflow-hidden">
+              <HeroGradientMesh />
+              <div className="max-w-7xl w-full mx-auto flex flex-col items-center relative z-10">
                 <HeroObject />
-                <motion.div
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 1.2, ease: [0.23, 1, 0.32, 1], delay: 0.3 }}
-                  className="text-center mt-8 max-w-3xl mx-auto"
-                >
-                  <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight-custom text-foreground leading-[1.05]">
-                    Inderjeet Singh
+                <div className="text-center mt-8 max-w-3xl mx-auto">
+                  <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-display text-foreground leading-[1.05] flex flex-wrap justify-center gap-x-4">
+                    {"Inderjeet Singh".split(" ").map((word, i) => (
+                      <motion.span
+                        key={i}
+                        initial={{ opacity: 0, y: 40, filter: "blur(12px)" }}
+                        animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                        transition={{
+                          duration: 1,
+                          ease: [0.22, 1, 0.36, 1],
+                          delay: 0.3 + i * 0.12,
+                        }}
+                        className="inline-block"
+                      >
+                        {word}
+                      </motion.span>
+                    ))}
                   </h1>
                   <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.6, duration: 0.8 }}
+                    initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
+                    animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                    transition={{ delay: 0.7, duration: 1, ease: [0.22, 1, 0.36, 1] }}
                     className="mt-4 text-xl md:text-2xl lg:text-3xl font-medium tracking-tight-custom"
                   >
                     <Typewriter />
                   </motion.div>
                   <motion.p
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.8, duration: 1 }}
+                    initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
+                    animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                    transition={{ delay: 0.95, duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
                     className="mt-6 text-muted-foreground text-base md:text-lg max-w-lg mx-auto leading-relaxed"
                   >
                     Building scalable web architecture and data-driven systems. Currently pursuing a B.Tech in Artificial Intelligence and Data Science (Class of 2027).
                   </motion.p>
-                </motion.div>
+                </div>
 
                 {/* Scroll indicator */}
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  transition={{ delay: 1.5, duration: 1 }}
+                  transition={{ delay: 1.6, duration: 1 }}
                   className="mt-20"
                 >
-                  <div className="w-5 h-8 rounded-full border-2 border-muted-foreground/30 flex items-start justify-center p-1">
+                  <div className="w-5 h-8 rounded-full border border-white/20 flex items-start justify-center p-1">
                     <motion.div
                       animate={{ y: [0, 8, 0] }}
                       transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                      className="w-1 h-2 rounded-full bg-muted-foreground/50"
+                      className="w-1 h-2 rounded-full bg-primary"
+                      style={{ boxShadow: "0 0 8px hsla(211,100%,60%,0.8)" }}
                     />
                   </div>
                 </motion.div>
