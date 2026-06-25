@@ -77,7 +77,7 @@ const Navbar = () => {
       transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
       className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 lg:px-16 py-5 border-b border-white/[0.05]"
       style={{
-        background: "hsla(240, 6%, 6%, 0.65)",
+        background: "hsla(225, 26%, 6%, 0.72)",
         backdropFilter: "blur(24px) saturate(140%)",
         WebkitBackdropFilter: "blur(24px) saturate(140%)",
       }}

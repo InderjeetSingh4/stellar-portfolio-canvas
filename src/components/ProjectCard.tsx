@@ -127,7 +127,7 @@ const ProjectCard = ({ title, subtitle, description, tags, visual, index, link }
     }
     if (glowRef.current) {
       glowRef.current.style.opacity = hovered ? "1" : "0";
-      glowRef.current.style.background = `radial-gradient(420px circle at ${x * 100}% ${y * 100}%, hsla(220, 10%, 60%, 0.06), transparent 60%)`;
+      glowRef.current.style.background = `radial-gradient(420px circle at ${x * 100}% ${y * 100}%, hsla(218, 30%, 60%, 0.12), hsla(150, 18%, 50%, 0.05) 35%, transparent 65%)`;
     }
     if (glareRef.current) {
       const pos = x * 100;
