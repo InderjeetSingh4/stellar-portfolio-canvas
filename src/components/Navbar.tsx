@@ -1,6 +1,6 @@
 import { motion, useSpring } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
-import { User, FolderGit2, Briefcase, Mail, FileText } from "lucide-react";
+import { User, FolderGit2, Briefcase, Mail, FileText, type LucideIcon } from "lucide-react";
 
 const navItems = [
   { id: "about", label: "About", icon: User },
@@ -22,7 +22,7 @@ const NavPill = ({
 }: {
   active?: boolean;
   onClick?: () => void;
-  icon: React.ComponentType<{ size?: number; strokeWidth?: number; className?: string }>;
+  icon: LucideIcon;
   label: string;
   href?: string;
   external?: boolean;
