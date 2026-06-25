@@ -25,29 +25,29 @@ function GlassTorus() {
 
   return (
     <>
-      <ambientLight intensity={0.3} />
-      <directionalLight position={[5, 5, 5]} intensity={1.2} color="#cfd3da" />
-      <directionalLight position={[-3, 2, -2]} intensity={0.4} color="#8a8f9a" />
-      <pointLight position={[0, 3, 3]} intensity={0.9} color="#aab0bc" />
-      <pointLight position={[-3, -2, 2]} intensity={0.5} color="#6b707a" />
+      <ambientLight intensity={0.7} />
+      <directionalLight position={[5, 5, 5]} intensity={1.4} color="#ffffff" />
+      <directionalLight position={[-3, 2, -2]} intensity={0.5} color="#cfd6e4" />
+      <pointLight position={[0, 3, 3]} intensity={1.0} color="#dbe2ee" />
+      <pointLight position={[-3, -2, 2]} intensity={0.5} color="#aab4c4" />
 
       <Float speed={1.5} rotationIntensity={0.1} floatIntensity={0.5}>
         <mesh ref={meshRef}>
           <torusGeometry args={[1.4, 0.5, 64, 128]} />
           <meshPhysicalMaterial
-            color="#1a1b1e"
-            transmission={0.95}
-            thickness={1.4}
-            roughness={0.06}
-            metalness={0.05}
-            ior={1.6}
-            iridescence={0.15}
+            color="#dfe5ef"
+            transmission={0.6}
+            thickness={1.2}
+            roughness={0.08}
+            metalness={0.35}
+            ior={1.5}
+            iridescence={0.2}
             iridescenceIOR={1.2}
-            envMapIntensity={1.4}
+            envMapIntensity={1.2}
             clearcoat={1}
-            clearcoatRoughness={0.1}
+            clearcoatRoughness={0.12}
             transparent
-            opacity={0.92}
+            opacity={0.85}
             side={THREE.DoubleSide}
           />
         </mesh>
@@ -57,18 +57,18 @@ function GlassTorus() {
         <mesh ref={icoRef} position={[2.4, 1.2, -1.5]} scale={0.45}>
           <icosahedronGeometry args={[1, 0]} />
           <meshPhysicalMaterial
-            color="#101113"
-            transmission={0.85}
+            color="#c9d2e3"
+            transmission={0.5}
             thickness={0.8}
-            roughness={0.12}
-            metalness={0.2}
+            roughness={0.14}
+            metalness={0.45}
             ior={1.5}
-            iridescence={0.2}
+            iridescence={0.25}
             iridescenceIOR={1.3}
             clearcoat={1}
             clearcoatRoughness={0.18}
             transparent
-            opacity={0.88}
+            opacity={0.82}
           />
         </mesh>
       </Float>
