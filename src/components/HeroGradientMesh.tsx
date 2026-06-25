@@ -63,53 +63,51 @@ const HeroGradientMesh = () => {
 
   return (
     <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
-      {/* Base radial vignette */}
       <div
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse at 50% 40%, hsla(220, 30%, 12%, 1) 0%, #08090B 70%)",
+            "radial-gradient(ellipse at 50% 40%, hsla(230, 8%, 12%, 1) 0%, #0f0f11 70%)",
         }}
       />
-      {/* Blue blob */}
+      {/* Slate blob */}
       <div
         ref={blob1}
         className="absolute top-[10%] left-[15%] w-[55vw] h-[55vw] rounded-full"
         style={{
           background:
-            "radial-gradient(circle at center, hsla(211, 100%, 50%, 0.35) 0%, transparent 60%)",
-          filter: "blur(60px)",
+            "radial-gradient(circle at center, hsla(220, 18%, 35%, 0.18) 0%, transparent 60%)",
+          filter: "blur(70px)",
           willChange: "transform",
         }}
       />
-      {/* Violet blob */}
+      {/* Muted indigo blob */}
       <div
         ref={blob2}
         className="absolute top-[20%] right-[10%] w-[50vw] h-[50vw] rounded-full"
         style={{
           background:
-            "radial-gradient(circle at center, hsla(265, 80%, 55%, 0.28) 0%, transparent 60%)",
-          filter: "blur(70px)",
+            "radial-gradient(circle at center, hsla(235, 14%, 32%, 0.14) 0%, transparent 60%)",
+          filter: "blur(80px)",
           willChange: "transform",
         }}
       />
-      {/* Cyan blob */}
+      {/* Pale silver blob */}
       <div
         ref={blob3}
         className="absolute bottom-[5%] left-[35%] w-[45vw] h-[45vw] rounded-full"
         style={{
           background:
-            "radial-gradient(circle at center, hsla(190, 90%, 55%, 0.22) 0%, transparent 60%)",
-          filter: "blur(80px)",
+            "radial-gradient(circle at center, hsla(220, 6%, 50%, 0.1) 0%, transparent 60%)",
+          filter: "blur(90px)",
           willChange: "transform",
         }}
       />
-      {/* Top-down fade to body */}
       <div
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(180deg, transparent 60%, #08090B 100%)",
+            "linear-gradient(180deg, transparent 60%, #0f0f11 100%)",
         }}
       />
     </div>

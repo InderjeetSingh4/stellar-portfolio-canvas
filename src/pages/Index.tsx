@@ -131,12 +131,11 @@ const Index = () => {
                   transition={{ delay: 1.6, duration: 1 }}
                   className="mt-20"
                 >
-                  <div className="w-5 h-8 rounded-full border border-white/20 flex items-start justify-center p-1">
+                  <div className="w-5 h-8 rounded-full border border-white/15 flex items-start justify-center p-1">
                     <motion.div
                       animate={{ y: [0, 8, 0] }}
                       transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                      className="w-1 h-2 rounded-full bg-primary"
-                      style={{ boxShadow: "0 0 8px hsla(211,100%,60%,0.8)" }}
+                      className="w-1 h-2 rounded-full bg-white/60"
                     />
                   </div>
                 </motion.div>

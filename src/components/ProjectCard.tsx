@@ -15,16 +15,16 @@ interface ProjectCardProps {
 
 /* Minimalist dashboard wireframe */
 const DashboardVisual = () => (
-  <div className="relative w-full h-40 mb-6 rounded-xl overflow-hidden border border-white/10 bg-white/[0.02] p-4">
+  <div className="relative w-full h-40 mb-6 rounded-xl overflow-hidden border border-white/[0.05] bg-white/[0.015] p-4">
     <div className="flex items-center gap-2 mb-4">
-      <div className="w-2 h-2 rounded-full bg-white/20" />
       <div className="w-2 h-2 rounded-full bg-white/15" />
       <div className="w-2 h-2 rounded-full bg-white/10" />
+      <div className="w-2 h-2 rounded-full bg-white/[0.07]" />
       <div className="flex-1" />
-      <div className="w-12 h-1.5 rounded-full bg-white/15" />
+      <div className="w-12 h-1.5 rounded-full bg-white/10" />
     </div>
     <div className="grid grid-cols-3 gap-2 h-[calc(100%-32px)]">
-      <div className="col-span-2 rounded-lg bg-white/[0.03] border border-white/10 flex flex-col justify-end p-2">
+      <div className="col-span-2 rounded-lg bg-white/[0.02] border border-white/[0.05] flex flex-col justify-end p-2">
         <div className="flex items-end gap-1 h-full pt-2">
           {[40, 65, 50, 80, 55, 70, 90, 60].map((h, i) => (
             <motion.div
@@ -34,17 +34,17 @@ const DashboardVisual = () => (
               viewport={{ once: true }}
               transition={{ delay: 0.3 + i * 0.05, duration: 0.6, ease: "easeOut" }}
               className="flex-1 rounded-sm"
-              style={{ background: "linear-gradient(180deg, hsla(211,100%,60%,0.7) 0%, hsla(211,100%,55%,0.25) 100%)" }}
+              style={{ background: "linear-gradient(180deg, hsla(220,10%,65%,0.55) 0%, hsla(220,10%,55%,0.15) 100%)" }}
             />
           ))}
         </div>
       </div>
       <div className="flex flex-col gap-2">
-        <div className="flex-1 rounded-lg bg-white/[0.03] border border-white/10 flex items-center justify-center">
-          <span className="text-[10px] text-white/60 font-mono">2.4K</span>
+        <div className="flex-1 rounded-lg bg-white/[0.02] border border-white/[0.05] flex items-center justify-center">
+          <span className="text-[10px] text-white/50 font-mono">2.4K</span>
         </div>
-        <div className="flex-1 rounded-lg bg-white/[0.03] border border-white/10 flex items-center justify-center">
-          <span className="text-[10px] text-white/60 font-mono">98%</span>
+        <div className="flex-1 rounded-lg bg-white/[0.02] border border-white/[0.05] flex items-center justify-center">
+          <span className="text-[10px] text-white/50 font-mono">98%</span>
         </div>
       </div>
     </div>
@@ -53,41 +53,41 @@ const DashboardVisual = () => (
 
 /* Minimalist camera lens / bounding-box visual */
 const VisionVisual = () => (
-  <div className="relative w-full h-40 mb-6 rounded-xl overflow-hidden border border-white/10 bg-white/[0.02] flex items-center justify-center">
+  <div className="relative w-full h-40 mb-6 rounded-xl overflow-hidden border border-white/[0.05] bg-white/[0.015] flex items-center justify-center">
     <motion.div
       animate={{ rotate: 360 }}
       transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-      className="absolute w-28 h-28 rounded-full border border-white/15"
+      className="absolute w-28 h-28 rounded-full border border-white/10"
     />
     <motion.div
       animate={{ rotate: -360 }}
       transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-      className="absolute w-20 h-20 rounded-full border border-white/20"
+      className="absolute w-20 h-20 rounded-full border border-white/15"
     />
-    <div className="absolute w-12 h-12 rounded-full border border-white/25 bg-white/5" />
-    <div className="absolute w-4 h-4 rounded-full bg-primary/40" style={{ boxShadow: "0 0 20px hsla(211,100%,60%,0.6)" }} />
+    <div className="absolute w-12 h-12 rounded-full border border-white/20 bg-white/[0.03]" />
+    <div className="absolute w-4 h-4 rounded-full bg-white/20" style={{ boxShadow: "0 0 16px hsla(220,8%,70%,0.25)" }} />
     <motion.div
       initial={{ opacity: 0, scale: 0.8 }}
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
       transition={{ delay: 0.4, duration: 0.6 }}
-      className="absolute top-5 right-8 w-16 h-12 border border-primary/60 rounded-sm"
+      className="absolute top-5 right-8 w-16 h-12 border border-white/30 rounded-sm"
     >
-      <span className="absolute -top-3 left-0 text-[8px] text-primary font-mono">obj_01</span>
+      <span className="absolute -top-3 left-0 text-[8px] text-white/60 font-mono">obj_01</span>
     </motion.div>
     <motion.div
       initial={{ opacity: 0, scale: 0.8 }}
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
       transition={{ delay: 0.6, duration: 0.6 }}
-      className="absolute bottom-6 left-10 w-20 h-10 border border-primary/50 rounded-sm"
+      className="absolute bottom-6 left-10 w-20 h-10 border border-white/25 rounded-sm"
     >
-      <span className="absolute -top-3 left-0 text-[8px] text-primary font-mono">obj_02</span>
+      <span className="absolute -top-3 left-0 text-[8px] text-white/60 font-mono">obj_02</span>
     </motion.div>
     {["top-2 left-3", "top-2 right-3", "bottom-2 left-3", "bottom-2 right-3"].map((pos, i) => (
       <div key={i} className={`absolute ${pos} w-3 h-3`}>
-        <div className={`absolute ${i < 2 ? "top-0" : "bottom-0"} ${i % 2 === 0 ? "left-0" : "right-0"} w-full h-px bg-white/20`} />
-        <div className={`absolute ${i < 2 ? "top-0" : "bottom-0"} ${i % 2 === 0 ? "left-0" : "right-0"} w-px h-full bg-white/20`} />
+        <div className={`absolute ${i < 2 ? "top-0" : "bottom-0"} ${i % 2 === 0 ? "left-0" : "right-0"} w-full h-px bg-white/15`} />
+        <div className={`absolute ${i < 2 ? "top-0" : "bottom-0"} ${i % 2 === 0 ? "left-0" : "right-0"} w-px h-full bg-white/15`} />
       </div>
     ))}
   </div>
@@ -127,12 +127,11 @@ const ProjectCard = ({ title, subtitle, description, tags, visual, index, link }
     }
     if (glowRef.current) {
       glowRef.current.style.opacity = hovered ? "1" : "0";
-      glowRef.current.style.background = `radial-gradient(420px circle at ${x * 100}% ${y * 100}%, hsla(211, 100%, 55%, 0.18), transparent 60%)`;
+      glowRef.current.style.background = `radial-gradient(420px circle at ${x * 100}% ${y * 100}%, hsla(220, 10%, 60%, 0.06), transparent 60%)`;
     }
     if (glareRef.current) {
-      // Diagonal glare sweep tracks pointer
       const pos = x * 100;
-      glareRef.current.style.background = `linear-gradient(105deg, transparent ${Math.max(0, pos - 25)}%, hsla(0,0%,100%,0.12) ${pos}%, transparent ${Math.min(100, pos + 25)}%)`;
+      glareRef.current.style.background = `linear-gradient(105deg, transparent ${Math.max(0, pos - 25)}%, hsla(0,0%,100%,0.05) ${pos}%, transparent ${Math.min(100, pos + 25)}%)`;
       glareRef.current.style.opacity = hovered ? "1" : "0";
     }
     if (contentRef.current) {
@@ -204,7 +203,7 @@ const ProjectCard = ({ title, subtitle, description, tags, visual, index, link }
           style={{ transition: "transform 0.4s cubic-bezier(0.23, 1, 0.32, 1)" }}
         >
           <h3 className="text-xl font-semibold text-foreground mb-1 tracking-tight-custom">{title}</h3>
-          <p className="text-xs uppercase tracking-[0.18em] text-primary/80 mb-3">{subtitle}</p>
+          <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground/80 mb-3">{subtitle}</p>
           <p className="text-muted-foreground text-sm leading-relaxed mb-5">{description}</p>
           <div
             ref={tagsRef}
@@ -212,7 +211,7 @@ const ProjectCard = ({ title, subtitle, description, tags, visual, index, link }
             style={{ transition: "transform 0.45s cubic-bezier(0.23, 1, 0.32, 1)" }}
           >
             {tags.map((tag) => (
-              <span key={tag} className="text-[11px] px-3 py-1 rounded-full border border-white/10 text-muted-foreground bg-white/[0.02]">
+              <span key={tag} className="text-[11px] px-3 py-1 rounded-full border border-white/[0.07] text-muted-foreground bg-white/[0.015]">
                 {tag}
               </span>
             ))}
@@ -222,7 +221,7 @@ const ProjectCard = ({ title, subtitle, description, tags, visual, index, link }
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={(e) => e.stopPropagation()}
-                className="ml-auto inline-flex items-center gap-1.5 text-xs font-medium text-foreground border border-primary/40 bg-primary/10 rounded-full px-3 py-1 transition-all duration-300 hover:bg-primary/20 hover:border-primary/60"
+                className="ml-auto inline-flex items-center gap-1.5 text-xs font-medium text-foreground border border-white/[0.1] bg-white/[0.03] rounded-full px-3 py-1 transition-all duration-300 hover:bg-white/[0.06] hover:border-white/[0.18]"
               >
                 View Live
                 <ExternalLink size={12} />
