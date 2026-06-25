@@ -1,109 +1,170 @@
 import { motion, useSpring } from "framer-motion";
-import { useRef } from "react";
-import Magnetic from "./Magnetic";
+import { useRef, useState, useEffect } from "react";
+import { User, FolderGit2, Briefcase, Mail, FileText, type LucideIcon } from "lucide-react";
 
-const navItems = ["About", "Projects", "Experience", "Contact"];
+const navItems = [
+  { id: "about", label: "About", icon: User },
+  { id: "projects", label: "Projects", icon: FolderGit2 },
+  { id: "experience", label: "Experience", icon: Briefcase },
+  { id: "contact", label: "Contact", icon: Mail },
+];
 
-const ResumeButton = () => {
-  const ref = useRef<HTMLAnchorElement>(null);
-  const x = useSpring(0, { stiffness: 150, damping: 25, mass: 0.8 });
-  const y = useSpring(0, { stiffness: 150, damping: 25, mass: 0.8 });
+const RESUME_URL =
+  "https://drive.google.com/file/d/1-txpQWlRfcHm45_5WIqCD75JhyR0krkC/view?usp=drive_link";
+
+const NavPill = ({
+  active,
+  onClick,
+  icon: Icon,
+  label,
+  href,
+  external,
+}: {
+  active?: boolean;
+  onClick?: () => void;
+  icon: LucideIcon;
+  label: string;
+  href?: string;
+  external?: boolean;
+}) => {
+  const content = (
+    <motion.span
+      whileHover={{ scale: 1.08 }}
+      whileTap={{ scale: 0.92 }}
+      transition={{ type: "spring", stiffness: 400, damping: 22 }}
+      className="relative flex items-center gap-2 px-3.5 py-2 rounded-full text-sm font-medium text-slate-700"
+    >
+      {active && (
+        <motion.span
+          layoutId="nav-active-pill"
+          transition={{ type: "spring", stiffness: 380, damping: 32 }}
+          className="absolute inset-0 rounded-full bg-white/85 border border-white/90"
+          style={{
+            boxShadow:
+              "0 1px 0 0 hsla(0,0%,100%,1) inset, 0 6px 16px -8px hsla(222,33%,20%,0.18)",
+          }}
+        />
+      )}
+      <Icon size={15} strokeWidth={2} className="relative z-10" />
+      <span className="relative z-10 hidden sm:inline">{label}</span>
+    </motion.span>
+  );
+
+  if (href) {
+    return (
+      <a
+        href={href}
+        onClick={onClick}
+        target={external ? "_blank" : undefined}
+        rel={external ? "noopener noreferrer" : undefined}
+        className="outline-none"
+      >
+        {content}
+      </a>
+    );
+  }
+  return (
+    <button onClick={onClick} className="outline-none">
+      {content}
+    </button>
+  );
+};
+
+const Navbar = () => {
+  const [active, setActive] = useState("about");
+  const x = useSpring(0, { stiffness: 150, damping: 22 });
+  const y = useSpring(0, { stiffness: 150, damping: 22 });
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // Scroll-spy
+  useEffect(() => {
+    const ids = navItems.map((n) => n.id);
+    const onScroll = () => {
+      const y = window.scrollY + 140;
+      let current = ids[0];
+      for (const id of ids) {
+        const el = document.getElementById(id);
+        if (el && el.offsetTop <= y) current = id;
+      }
+      setActive(current);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const handleMouseMove = (e: React.MouseEvent) => {
-    if (!ref.current) return;
-    const rect = ref.current.getBoundingClientRect();
+    if (!containerRef.current) return;
+    const rect = containerRef.current.getBoundingClientRect();
     const cx = rect.left + rect.width / 2;
     const cy = rect.top + rect.height / 2;
-    x.set((e.clientX - cx) * 0.15);
-    y.set((e.clientY - cy) * 0.15);
+    x.set((e.clientX - cx) * 0.04);
+    y.set((e.clientY - cy) * 0.04);
   };
-
   const handleMouseLeave = () => {
     x.set(0);
     y.set(0);
   };
 
   return (
-    <motion.a
-      ref={ref}
-      href="https://drive.google.com/file/d/1-txpQWlRfcHm45_5WIqCD75JhyR0krkC/view?usp=drive_link"
-      target="_blank"
-      rel="noopener noreferrer"
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      style={{
-        x,
-        y,
-        background: "hsla(0, 0%, 100%, 0.04)",
-        border: "1px solid hsla(0, 0%, 100%, 0.08)",
-        backdropFilter: "blur(16px) saturate(140%)",
-        WebkitBackdropFilter: "blur(16px) saturate(140%)",
-        boxShadow: "0 0 0 1px hsla(0,0%,100%,0.03) inset, 0 8px 28px -10px rgba(0,0,0,0.7)",
-      }}
-      whileTap={{ scale: 0.95 }}
-      className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium tracking-wide text-foreground transition-colors duration-300"
-    >
-      <span>Resume</span>
-      <svg
-        width="14"
-        height="14"
-        viewBox="0 0 14 14"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className="transition-transform duration-300 ease-out group-hover:translate-y-[2px]"
-      >
-        <path d="M7 1v9" />
-        <path d="M3.5 7.5 7 11l3.5-3.5" />
-        <line
-          x1="2"
-          y1="13"
-          x2="12"
-          y2="13"
-          className="origin-center transition-all duration-300 ease-out group-hover:scale-x-125"
-        />
-      </svg>
-    </motion.a>
-  );
-};
-
-const Navbar = () => {
-  return (
     <motion.nav
-      initial={{ opacity: 0, y: -20 }}
+      initial={{ opacity: 0, y: -16 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
-      className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 lg:px-16 py-5 border-b border-white/[0.05]"
-      style={{
-        background: "hsla(225, 26%, 6%, 0.72)",
-        backdropFilter: "blur(24px) saturate(140%)",
-        WebkitBackdropFilter: "blur(24px) saturate(140%)",
-      }}
+      transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
+      className="fixed top-4 md:top-5 left-1/2 -translate-x-1/2 z-50 px-4 w-auto max-w-[95vw]"
     >
-      <Magnetic strength={0.15}>
-        <span className="text-foreground font-semibold text-lg tracking-tight-custom">
-          portfolio<span className="text-muted-foreground">.</span>
-        </span>
-      </Magnetic>
-      <ul className="hidden md:flex items-center gap-8">
+      <motion.div
+        ref={containerRef}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        style={{ x, y }}
+        className="flex items-center gap-1 sm:gap-1.5 pl-2 pr-1.5 py-1.5 rounded-full bg-white/45 backdrop-blur-2xl backdrop-saturate-150 border border-white/60 shadow-xl shadow-black/5"
+      >
+        {/* Brand mark */}
+        <motion.a
+          href="#top"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          transition={{ type: "spring", stiffness: 400, damping: 22 }}
+          className="px-3 py-2 rounded-full text-sm font-semibold tracking-tight-custom text-slate-900"
+        >
+          IS<span className="text-slate-400">.</span>
+        </motion.a>
+
+        <span className="h-5 w-px bg-slate-900/10 mx-0.5" />
+
+        {/* Nav items */}
         {navItems.map((item) => (
-          <li key={item}>
-            <Magnetic strength={0.25}>
-              <a
-                href={`#${item.toLowerCase()}`}
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-300"
-              >
-                {item}
-              </a>
-            </Magnetic>
-          </li>
+          <NavPill
+            key={item.id}
+            icon={item.icon}
+            label={item.label}
+            href={`#${item.id}`}
+            onClick={() => setActive(item.id)}
+            active={active === item.id}
+          />
         ))}
-        <li>
-          <ResumeButton />
-        </li>
-      </ul>
+
+        <span className="h-5 w-px bg-slate-900/10 mx-0.5" />
+
+        {/* Resume capsule */}
+        <motion.a
+          href={RESUME_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.94 }}
+          transition={{ type: "spring", stiffness: 400, damping: 22 }}
+          className="flex items-center gap-1.5 px-3.5 py-2 rounded-full text-sm font-medium text-white bg-slate-900/90 hover:bg-slate-900 transition-colors"
+          style={{
+            boxShadow:
+              "0 1px 0 0 hsla(0,0%,100%,0.15) inset, 0 6px 18px -6px hsla(222,33%,20%,0.35)",
+          }}
+        >
+          <FileText size={14} strokeWidth={2} />
+          <span className="hidden sm:inline">Resume</span>
+        </motion.a>
+      </motion.div>
     </motion.nav>
   );
 };

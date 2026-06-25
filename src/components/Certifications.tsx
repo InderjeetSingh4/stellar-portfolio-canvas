@@ -42,7 +42,7 @@ const Certifications = () => {
                   href={cert.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-xs font-medium text-foreground border border-white/[0.1] bg-white/[0.03] rounded-full px-3 py-1 transition-all duration-300 hover:bg-white/[0.06] hover:border-white/[0.18]"
+                  className="inline-flex items-center gap-1.5 text-xs font-medium text-foreground border border-slate-900/15 bg-slate-900/5 rounded-full px-3 py-1 transition-all duration-300 hover:bg-slate-900/10 hover:border-slate-900/25"
                 >
                   View Certificate
                   <ExternalLink size={12} />

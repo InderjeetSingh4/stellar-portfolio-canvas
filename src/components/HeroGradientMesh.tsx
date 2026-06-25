@@ -67,7 +67,7 @@ const HeroGradientMesh = () => {
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse at 50% 40%, hsla(225, 26%, 10%, 1) 0%, #0B0D14 70%)",
+            "radial-gradient(ellipse at 50% 40%, hsla(220, 30%, 99%, 1) 0%, #F8F9FA 70%)",
         }}
       />
       {/* Titanium blue blob */}
@@ -76,7 +76,7 @@ const HeroGradientMesh = () => {
         className="absolute top-[10%] left-[15%] w-[55vw] h-[55vw] rounded-full"
         style={{
           background:
-            "radial-gradient(circle at center, hsla(218, 30%, 50%, 0.18) 0%, transparent 60%)",
+            "radial-gradient(circle at center, hsla(218, 55%, 70%, 0.22) 0%, transparent 60%)",
           filter: "blur(70px)",
           willChange: "transform",
         }}
@@ -87,7 +87,7 @@ const HeroGradientMesh = () => {
         className="absolute top-[20%] right-[10%] w-[50vw] h-[50vw] rounded-full"
         style={{
           background:
-            "radial-gradient(circle at center, hsla(235, 22%, 38%, 0.14) 0%, transparent 60%)",
+            "radial-gradient(circle at center, hsla(235, 50%, 75%, 0.18) 0%, transparent 60%)",
           filter: "blur(80px)",
           willChange: "transform",
         }}
@@ -98,7 +98,7 @@ const HeroGradientMesh = () => {
         className="absolute bottom-[5%] left-[35%] w-[45vw] h-[45vw] rounded-full"
         style={{
           background:
-            "radial-gradient(circle at center, hsla(150, 18%, 45%, 0.1) 0%, transparent 60%)",
+            "radial-gradient(circle at center, hsla(150, 40%, 75%, 0.15) 0%, transparent 60%)",
           filter: "blur(90px)",
           willChange: "transform",
         }}
@@ -107,7 +107,7 @@ const HeroGradientMesh = () => {
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(180deg, transparent 60%, #0B0D14 100%)",
+            "linear-gradient(180deg, transparent 60%, #F8F9FA 100%)",
         }}
       />
     </div>

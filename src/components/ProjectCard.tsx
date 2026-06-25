@@ -15,16 +15,16 @@ interface ProjectCardProps {
 
 /* Minimalist dashboard wireframe */
 const DashboardVisual = () => (
-  <div className="relative w-full h-40 mb-6 rounded-xl overflow-hidden border border-white/[0.05] bg-white/[0.015] p-4">
+  <div className="relative w-full h-40 mb-6 rounded-xl overflow-hidden border border-slate-900/10 bg-slate-900/5 p-4">
     <div className="flex items-center gap-2 mb-4">
-      <div className="w-2 h-2 rounded-full bg-white/15" />
-      <div className="w-2 h-2 rounded-full bg-white/10" />
+      <div className="w-2 h-2 rounded-full bg-slate-900/20" />
+      <div className="w-2 h-2 rounded-full bg-slate-900/15" />
       <div className="w-2 h-2 rounded-full bg-white/[0.07]" />
       <div className="flex-1" />
-      <div className="w-12 h-1.5 rounded-full bg-white/10" />
+      <div className="w-12 h-1.5 rounded-full bg-slate-900/15" />
     </div>
     <div className="grid grid-cols-3 gap-2 h-[calc(100%-32px)]">
-      <div className="col-span-2 rounded-lg bg-white/[0.02] border border-white/[0.05] flex flex-col justify-end p-2">
+      <div className="col-span-2 rounded-lg bg-slate-900/5 border border-slate-900/10 flex flex-col justify-end p-2">
         <div className="flex items-end gap-1 h-full pt-2">
           {[40, 65, 50, 80, 55, 70, 90, 60].map((h, i) => (
             <motion.div
@@ -40,11 +40,11 @@ const DashboardVisual = () => (
         </div>
       </div>
       <div className="flex flex-col gap-2">
-        <div className="flex-1 rounded-lg bg-white/[0.02] border border-white/[0.05] flex items-center justify-center">
-          <span className="text-[10px] text-white/50 font-mono">2.4K</span>
+        <div className="flex-1 rounded-lg bg-slate-900/5 border border-slate-900/10 flex items-center justify-center">
+          <span className="text-[10px] text-slate-600 font-mono">2.4K</span>
         </div>
-        <div className="flex-1 rounded-lg bg-white/[0.02] border border-white/[0.05] flex items-center justify-center">
-          <span className="text-[10px] text-white/50 font-mono">98%</span>
+        <div className="flex-1 rounded-lg bg-slate-900/5 border border-slate-900/10 flex items-center justify-center">
+          <span className="text-[10px] text-slate-600 font-mono">98%</span>
         </div>
       </div>
     </div>
@@ -53,41 +53,41 @@ const DashboardVisual = () => (
 
 /* Minimalist camera lens / bounding-box visual */
 const VisionVisual = () => (
-  <div className="relative w-full h-40 mb-6 rounded-xl overflow-hidden border border-white/[0.05] bg-white/[0.015] flex items-center justify-center">
+  <div className="relative w-full h-40 mb-6 rounded-xl overflow-hidden border border-slate-900/10 bg-slate-900/5 flex items-center justify-center">
     <motion.div
       animate={{ rotate: 360 }}
       transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-      className="absolute w-28 h-28 rounded-full border border-white/10"
+      className="absolute w-28 h-28 rounded-full border border-slate-900/15"
     />
     <motion.div
       animate={{ rotate: -360 }}
       transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-      className="absolute w-20 h-20 rounded-full border border-white/15"
+      className="absolute w-20 h-20 rounded-full border border-slate-900/20"
     />
-    <div className="absolute w-12 h-12 rounded-full border border-white/20 bg-white/[0.03]" />
-    <div className="absolute w-4 h-4 rounded-full bg-white/20" style={{ boxShadow: "0 0 16px hsla(220,8%,70%,0.25)" }} />
+    <div className="absolute w-12 h-12 rounded-full border border-slate-900/25 bg-slate-900/5" />
+    <div className="absolute w-4 h-4 rounded-full bg-slate-900/25" style={{ boxShadow: "0 0 16px hsla(220,8%,70%,0.25)" }} />
     <motion.div
       initial={{ opacity: 0, scale: 0.8 }}
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
       transition={{ delay: 0.4, duration: 0.6 }}
-      className="absolute top-5 right-8 w-16 h-12 border border-white/30 rounded-sm"
+      className="absolute top-5 right-8 w-16 h-12 border border-slate-900/35 rounded-sm"
     >
-      <span className="absolute -top-3 left-0 text-[8px] text-white/60 font-mono">obj_01</span>
+      <span className="absolute -top-3 left-0 text-[8px] text-slate-600 font-mono">obj_01</span>
     </motion.div>
     <motion.div
       initial={{ opacity: 0, scale: 0.8 }}
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
       transition={{ delay: 0.6, duration: 0.6 }}
-      className="absolute bottom-6 left-10 w-20 h-10 border border-white/25 rounded-sm"
+      className="absolute bottom-6 left-10 w-20 h-10 border border-slate-900/30 rounded-sm"
     >
-      <span className="absolute -top-3 left-0 text-[8px] text-white/60 font-mono">obj_02</span>
+      <span className="absolute -top-3 left-0 text-[8px] text-slate-600 font-mono">obj_02</span>
     </motion.div>
     {["top-2 left-3", "top-2 right-3", "bottom-2 left-3", "bottom-2 right-3"].map((pos, i) => (
       <div key={i} className={`absolute ${pos} w-3 h-3`}>
-        <div className={`absolute ${i < 2 ? "top-0" : "bottom-0"} ${i % 2 === 0 ? "left-0" : "right-0"} w-full h-px bg-white/15`} />
-        <div className={`absolute ${i < 2 ? "top-0" : "bottom-0"} ${i % 2 === 0 ? "left-0" : "right-0"} w-px h-full bg-white/15`} />
+        <div className={`absolute ${i < 2 ? "top-0" : "bottom-0"} ${i % 2 === 0 ? "left-0" : "right-0"} w-full h-px bg-slate-900/20`} />
+        <div className={`absolute ${i < 2 ? "top-0" : "bottom-0"} ${i % 2 === 0 ? "left-0" : "right-0"} w-px h-full bg-slate-900/20`} />
       </div>
     ))}
   </div>
@@ -127,7 +127,7 @@ const ProjectCard = ({ title, subtitle, description, tags, visual, index, link }
     }
     if (glowRef.current) {
       glowRef.current.style.opacity = hovered ? "1" : "0";
-      glowRef.current.style.background = `radial-gradient(420px circle at ${x * 100}% ${y * 100}%, hsla(218, 30%, 60%, 0.12), hsla(150, 18%, 50%, 0.05) 35%, transparent 65%)`;
+      glowRef.current.style.background = `radial-gradient(420px circle at ${x * 100}% ${y * 100}%, hsla(218, 60%, 70%, 0.18), hsla(150, 30%, 70%, 0.08) 35%, transparent 65%)`;
     }
     if (glareRef.current) {
       const pos = x * 100;
@@ -211,7 +211,7 @@ const ProjectCard = ({ title, subtitle, description, tags, visual, index, link }
             style={{ transition: "transform 0.45s cubic-bezier(0.23, 1, 0.32, 1)" }}
           >
             {tags.map((tag) => (
-              <span key={tag} className="text-[11px] px-3 py-1 rounded-full border border-white/[0.07] text-muted-foreground bg-white/[0.015]">
+              <span key={tag} className="text-[11px] px-3 py-1 rounded-full border border-slate-900/10 text-muted-foreground bg-slate-900/5">
                 {tag}
               </span>
             ))}
@@ -221,7 +221,7 @@ const ProjectCard = ({ title, subtitle, description, tags, visual, index, link }
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={(e) => e.stopPropagation()}
-                className="ml-auto inline-flex items-center gap-1.5 text-xs font-medium text-foreground border border-white/[0.1] bg-white/[0.03] rounded-full px-3 py-1 transition-all duration-300 hover:bg-white/[0.06] hover:border-white/[0.18]"
+                className="ml-auto inline-flex items-center gap-1.5 text-xs font-medium text-foreground border border-slate-900/15 bg-slate-900/5 rounded-full px-3 py-1 transition-all duration-300 hover:bg-slate-900/10 hover:border-slate-900/25"
               >
                 View Live
                 <ExternalLink size={12} />

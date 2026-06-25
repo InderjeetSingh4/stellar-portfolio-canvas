@@ -26,8 +26,8 @@ const CustomCursor = () => {
       ringRef.current.style.width = `${size}px`;
       ringRef.current.style.height = `${size}px`;
       ringRef.current.style.borderColor = hovered.current
-        ? "hsla(0, 0%, 100%, 0.55)"
-        : "hsla(0, 0%, 100%, 0.7)";
+        ? "hsla(222, 33%, 20%, 0.45)"
+        : "hsla(222, 33%, 20%, 0.6)";
       ringRef.current.style.backgroundColor = "transparent";
 
       const span = ringRef.current.firstElementChild as HTMLElement;
@@ -109,11 +109,11 @@ const CustomCursor = () => {
           width: 130,
           height: 130,
           background:
-            "radial-gradient(circle, hsla(220, 8%, 70%, 0.22) 0%, hsla(220, 8%, 70%, 0.06) 35%, transparent 70%)",
+            "radial-gradient(circle, hsla(218, 40%, 55%, 0.28) 0%, hsla(218, 40%, 55%, 0.08) 35%, transparent 70%)",
           filter: "blur(22px)",
           willChange: "transform, opacity, width, height",
           transition: "opacity 0.35s ease, width 0.35s ease, height 0.35s ease",
-          mixBlendMode: "screen",
+          mixBlendMode: "multiply",
         }}
       />
       {/* Ring */}
@@ -144,7 +144,7 @@ const CustomCursor = () => {
           height: 6,
           willChange: "transform",
           background: "hsl(var(--foreground))",
-          boxShadow: "0 0 10px hsla(0, 0%, 0%, 0.6)",
+          boxShadow: "0 0 8px hsla(218, 30%, 30%, 0.4)",
         }}
       />
     </>
