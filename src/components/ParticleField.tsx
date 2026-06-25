@@ -29,7 +29,7 @@ function Particles({ count = 600 }) {
         <bufferAttribute attach="attributes-position" count={count} array={positions} itemSize={3} />
         <bufferAttribute attach="attributes-size" count={count} array={sizes} itemSize={1} />
       </bufferGeometry>
-      <pointsMaterial size={0.02} color="#7aa8ff" transparent opacity={0.35} sizeAttenuation depthWrite={false} />
+      <pointsMaterial size={0.02} color="#9aa0ac" transparent opacity={0.28} sizeAttenuation depthWrite={false} />
     </points>
   );
 }
@@ -48,7 +48,7 @@ const ParticleField = () => {
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          background: `radial-gradient(ellipse at 50% 50%, transparent 0%, #08090B 75%)`,
+          background: `radial-gradient(ellipse at 50% 50%, transparent 0%, #0f0f11 75%)`,
         }}
       />
     </div>

@@ -34,11 +34,11 @@ const ResumeButton = () => {
       style={{
         x,
         y,
-        background: "hsla(211, 100%, 52%, 0.12)",
-        border: "1px solid hsla(211, 100%, 60%, 0.35)",
-        backdropFilter: "blur(16px) saturate(160%)",
-        WebkitBackdropFilter: "blur(16px) saturate(160%)",
-        boxShadow: "0 0 0 1px hsla(255,255,255,0.04) inset, 0 6px 24px -8px hsla(211, 100%, 50%, 0.35)",
+        background: "hsla(0, 0%, 100%, 0.04)",
+        border: "1px solid hsla(0, 0%, 100%, 0.08)",
+        backdropFilter: "blur(16px) saturate(140%)",
+        WebkitBackdropFilter: "blur(16px) saturate(140%)",
+        boxShadow: "0 0 0 1px hsla(0,0%,100%,0.03) inset, 0 8px 28px -10px rgba(0,0,0,0.7)",
       }}
       whileTap={{ scale: 0.95 }}
       className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium tracking-wide text-foreground transition-colors duration-300"
@@ -75,11 +75,11 @@ const Navbar = () => {
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
-      className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 lg:px-16 py-5 border-b border-white/[0.06]"
+      className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 lg:px-16 py-5 border-b border-white/[0.05]"
       style={{
-        background: "hsla(220, 10%, 4%, 0.55)",
-        backdropFilter: "blur(24px) saturate(160%)",
-        WebkitBackdropFilter: "blur(24px) saturate(160%)",
+        background: "hsla(240, 6%, 6%, 0.65)",
+        backdropFilter: "blur(24px) saturate(140%)",
+        WebkitBackdropFilter: "blur(24px) saturate(140%)",
       }}
     >
       <Magnetic strength={0.15}>

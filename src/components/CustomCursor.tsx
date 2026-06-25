@@ -26,8 +26,8 @@ const CustomCursor = () => {
       ringRef.current.style.width = `${size}px`;
       ringRef.current.style.height = `${size}px`;
       ringRef.current.style.borderColor = hovered.current
-        ? "hsla(211, 100%, 60%, 0.6)"
-        : "hsla(0, 0%, 100%, 0.85)";
+        ? "hsla(0, 0%, 100%, 0.55)"
+        : "hsla(0, 0%, 100%, 0.7)";
       ringRef.current.style.backgroundColor = "transparent";
 
       const span = ringRef.current.firstElementChild as HTMLElement;
@@ -42,11 +42,11 @@ const CustomCursor = () => {
     }
 
     if (glowRef.current) {
-      const size = hovered.current ? 220 : 140;
+      const size = hovered.current ? 200 : 130;
       glowRef.current.style.transform = `translate3d(${glowPos.current.x - size / 2}px, ${glowPos.current.y - size / 2}px, 0)`;
       glowRef.current.style.width = `${size}px`;
       glowRef.current.style.height = `${size}px`;
-      glowRef.current.style.opacity = hovered.current ? "0.55" : "0.32";
+      glowRef.current.style.opacity = hovered.current ? "0.25" : "0.14";
     }
 
     rafId.current = requestAnimationFrame(tick);
@@ -101,16 +101,16 @@ const CustomCursor = () => {
 
   return (
     <>
-      {/* Neon glow halo */}
+      {/* Subtle silver halo */}
       <div
         ref={glowRef}
         className="fixed top-0 left-0 z-[9998] pointer-events-none rounded-full"
         style={{
-          width: 140,
-          height: 140,
+          width: 130,
+          height: 130,
           background:
-            "radial-gradient(circle, hsla(211, 100%, 55%, 0.55) 0%, hsla(211, 100%, 55%, 0.15) 35%, transparent 70%)",
-          filter: "blur(20px)",
+            "radial-gradient(circle, hsla(220, 8%, 70%, 0.22) 0%, hsla(220, 8%, 70%, 0.06) 35%, transparent 70%)",
+          filter: "blur(22px)",
           willChange: "transform, opacity, width, height",
           transition: "opacity 0.35s ease, width 0.35s ease, height 0.35s ease",
           mixBlendMode: "screen",
@@ -144,7 +144,7 @@ const CustomCursor = () => {
           height: 6,
           willChange: "transform",
           background: "hsl(var(--foreground))",
-          boxShadow: "0 0 12px hsla(211, 100%, 60%, 0.8)",
+          boxShadow: "0 0 10px hsla(0, 0%, 0%, 0.6)",
         }}
       />
     </>
