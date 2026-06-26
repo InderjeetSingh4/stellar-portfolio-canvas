@@ -55,7 +55,7 @@ const ExperienceTimeline = () => {
                   transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: i * 0.5 }}
                 />
               </div>
-              <div className="glass-card p-6 md:p-8">
+              <div className="glass-card p-6 md:p-8 transform-gpu transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lg">
                 <div className="flex items-center gap-3 flex-wrap">
                   <h3 className="text-lg font-medium text-foreground">{exp.role}</h3>
                   {(exp as any).duration && (
