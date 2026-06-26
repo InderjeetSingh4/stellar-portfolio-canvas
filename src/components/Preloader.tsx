@@ -40,7 +40,7 @@ const Preloader = ({ onComplete }: PreloaderProps) => {
           initial={{ opacity: 1 }}
           exit={{ opacity: 0, scale: 0.96 }}
           transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
-          className="fixed inset-0 z-[10000] flex items-center justify-center bg-background"
+          className="fixed inset-0 z-[10000] flex items-center justify-center bg-background transform-gpu will-change-transform"
         >
           <div className="relative">
             <motion.span
@@ -54,7 +54,7 @@ const Preloader = ({ onComplete }: PreloaderProps) => {
           {/* Thin progress line */}
           <div className="absolute bottom-0 left-0 right-0 h-px bg-border">
             <motion.div
-              className="h-full bg-foreground/30"
+              className="h-full bg-foreground/30 transform-gpu will-change-transform"
               style={{ width: `${progress}%`, transition: "width 0.1s linear" }}
             />
           </div>

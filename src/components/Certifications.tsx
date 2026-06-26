@@ -25,7 +25,7 @@ const Certifications = () => {
           <motion.div
             whileHover={{ x: 6 }}
             transition={{ type: "spring", stiffness: 300, damping: 25 }}
-            className="group glass-card glass-card-hover px-8 py-6 cursor-default"
+            className="group glass-card glass-card-hover px-8 py-6 cursor-default transform-gpu will-change-transform"
           >
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
               <div>

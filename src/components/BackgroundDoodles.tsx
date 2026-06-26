@@ -1,87 +1,50 @@
-// Subtle decorative doodles for the light background.
-// Pure SVG, fixed-position, pointer-events-none, very low opacity.
-const Doodle = ({
-  className,
-  children,
-}: {
-  className: string;
-  children: React.ReactNode;
-}) => (
-  <div
-    className={`absolute text-slate-400/25 select-none pointer-events-none ${className}`}
-    aria-hidden
-  >
-    {children}
-  </div>
-);
+// Explicit, subtle SVG doodle layer for the light background.
+const iconClass = "absolute text-gray-400 opacity-[0.07] select-none pointer-events-none";
 
 const BackgroundDoodles = () => {
   return (
-    <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
-      {/* Curly braces */}
-      <Doodle className="top-[8%] left-[4%] text-7xl font-mono opacity-30 hidden md:block">
-        {"{ }"}
-      </Doodle>
-      <Doodle className="top-[68%] right-[5%] text-6xl font-mono opacity-25 hidden md:block">
-        {"</>"}
-      </Doodle>
-      <Doodle className="top-[22%] right-[8%] text-5xl font-mono opacity-25">
-        {"[ ]"}
-      </Doodle>
-      <Doodle className="bottom-[8%] left-[6%] text-5xl font-mono opacity-20 hidden md:block">
-        {"=>"}
-      </Doodle>
+    <div className="fixed inset-0 pointer-events-none z-[-1] overflow-hidden">
+      <svg className={`${iconClass} top-10 left-10 w-20 h-20`} viewBox="0 0 80 80" fill="none" aria-hidden>
+        <text x="8" y="55" fill="currentColor" fontFamily="ui-monospace, SFMono-Regular, Menlo, monospace" fontSize="42" fontWeight="500">{"{ }"}</text>
+      </svg>
 
-      {/* Database cylinder */}
-      <Doodle className="top-[38%] left-[3%] opacity-30 hidden lg:block">
-        <svg width="56" height="64" viewBox="0 0 56 64" fill="none" stroke="currentColor" strokeWidth="1.2">
-          <ellipse cx="28" cy="10" rx="22" ry="6" />
-          <path d="M6 10v44c0 3.3 9.8 6 22 6s22-2.7 22-6V10" />
-          <path d="M6 24c0 3.3 9.8 6 22 6s22-2.7 22-6" />
-          <path d="M6 38c0 3.3 9.8 6 22 6s22-2.7 22-6" />
-        </svg>
-      </Doodle>
+      <svg className={`${iconClass} top-24 right-8 w-24 h-16`} viewBox="0 0 96 64" fill="none" aria-hidden>
+        <text x="6" y="42" fill="currentColor" fontFamily="ui-monospace, SFMono-Regular, Menlo, monospace" fontSize="32" fontWeight="500">{"</>"}</text>
+      </svg>
 
-      {/* Neural network nodes */}
-      <Doodle className="top-[55%] left-[42%] opacity-25 hidden md:block">
-        <svg width="120" height="80" viewBox="0 0 120 80" fill="none" stroke="currentColor" strokeWidth="1">
-          <circle cx="10" cy="14" r="3" />
-          <circle cx="10" cy="40" r="3" />
-          <circle cx="10" cy="66" r="3" />
-          <circle cx="60" cy="20" r="3" />
-          <circle cx="60" cy="60" r="3" />
-          <circle cx="110" cy="40" r="3" />
-          <path d="M13 14L57 20M13 40L57 20M13 40L57 60M13 66L57 60M63 20L107 40M63 60L107 40" />
-        </svg>
-      </Doodle>
+      <svg className={`${iconClass} bottom-20 right-20 w-16 h-16`} viewBox="0 0 64 64" fill="none" aria-hidden>
+        <text x="24" y="46" fill="currentColor" fontFamily="ui-monospace, SFMono-Regular, Menlo, monospace" fontSize="44" fontWeight="500">;</text>
+      </svg>
 
-      {/* Bar chart */}
-      <Doodle className="bottom-[18%] right-[12%] opacity-25">
-        <svg width="70" height="60" viewBox="0 0 70 60" fill="none" stroke="currentColor" strokeWidth="1.2">
-          <line x1="4" y1="56" x2="68" y2="56" />
-          <rect x="10" y="36" width="8" height="20" />
-          <rect x="24" y="22" width="8" height="34" />
-          <rect x="38" y="30" width="8" height="26" />
-          <rect x="52" y="14" width="8" height="42" />
-        </svg>
-      </Doodle>
+      <svg className={`${iconClass} top-[38%] left-6 w-16 h-20`} viewBox="0 0 64 80" fill="none" stroke="currentColor" strokeWidth="1.4" aria-hidden>
+        <ellipse cx="32" cy="14" rx="24" ry="8" />
+        <path d="M8 14v48c0 4.4 10.7 8 24 8s24-3.6 24-8V14" />
+        <path d="M8 30c0 4.4 10.7 8 24 8s24-3.6 24-8" />
+        <path d="M8 46c0 4.4 10.7 8 24 8s24-3.6 24-8" />
+      </svg>
 
-      {/* Function snippet */}
-      <Doodle className="top-[4%] right-[20%] text-xs font-mono opacity-25 hidden lg:block">
-        const data = await fetch()
-      </Doodle>
-      <Doodle className="bottom-[32%] left-[18%] text-xs font-mono opacity-25 hidden lg:block">
-        SELECT * FROM users
-      </Doodle>
+      <svg className={`${iconClass} bottom-32 left-12 w-20 h-16`} viewBox="0 0 80 64" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden>
+        <line x1="8" y1="56" x2="72" y2="56" />
+        <rect x="14" y="34" width="8" height="22" />
+        <rect x="30" y="20" width="8" height="36" />
+        <rect x="46" y="28" width="8" height="28" />
+        <rect x="62" y="12" width="8" height="44" />
+      </svg>
 
-      {/* Geometric ring */}
-      <Doodle className="top-[14%] left-[48%] opacity-20 hidden md:block">
-        <svg width="90" height="90" viewBox="0 0 90 90" fill="none" stroke="currentColor" strokeWidth="1">
-          <circle cx="45" cy="45" r="40" />
-          <circle cx="45" cy="45" r="28" />
-          <circle cx="45" cy="45" r="14" />
-        </svg>
-      </Doodle>
+      <svg className={`${iconClass} top-[54%] right-[12%] w-28 h-20`} viewBox="0 0 112 80" fill="none" stroke="currentColor" strokeWidth="1.2" aria-hidden>
+        <circle cx="12" cy="18" r="4" />
+        <circle cx="12" cy="58" r="4" />
+        <circle cx="56" cy="40" r="4" />
+        <circle cx="100" cy="18" r="4" />
+        <circle cx="100" cy="58" r="4" />
+        <path d="M16 18L52 40M16 58L52 40M60 40L96 18M60 40L96 58" />
+      </svg>
+
+      <svg className={`${iconClass} top-[18%] left-[48%] w-24 h-24`} viewBox="0 0 96 96" fill="none" stroke="currentColor" strokeWidth="1.2" aria-hidden>
+        <circle cx="48" cy="48" r="38" />
+        <circle cx="48" cy="48" r="24" />
+        <path d="M20 48h56M48 20v56" />
+      </svg>
     </div>
   );
 };

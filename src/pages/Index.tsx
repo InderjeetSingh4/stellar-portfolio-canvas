@@ -112,7 +112,7 @@ const Index = () => {
                     initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
                     animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                     transition={{ delay: 0.7, duration: 1, ease: [0.22, 1, 0.36, 1] }}
-                    className="mt-4 text-xl md:text-2xl lg:text-3xl font-medium tracking-tight-custom"
+                    className="mt-4 text-xl md:text-2xl lg:text-3xl font-medium tracking-tight-custom transform-gpu will-change-transform"
                   >
                     <Typewriter />
                   </motion.div>
@@ -131,13 +131,13 @@ const Index = () => {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 1.6, duration: 1 }}
-                  className="mt-20"
+                  className="mt-20 transform-gpu will-change-transform"
                 >
                   <div className="w-5 h-8 rounded-full border border-slate-900/20 flex items-start justify-center p-1">
                     <motion.div
                       animate={{ y: [0, 8, 0] }}
                       transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                      className="w-1 h-2 rounded-full bg-slate-900/50"
+                      className="w-1 h-2 rounded-full bg-slate-900/50 transform-gpu will-change-transform"
                     />
                   </div>
                 </motion.div>

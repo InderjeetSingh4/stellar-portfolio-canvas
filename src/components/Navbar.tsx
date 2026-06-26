@@ -32,12 +32,12 @@ const NavPill = ({
       whileHover={{ scale: 1.08 }}
       whileTap={{ scale: 0.92 }}
       transition={{ type: "spring", stiffness: 400, damping: 22 }}
-      className="relative flex items-center gap-2 px-3.5 py-2 rounded-full text-sm font-medium text-slate-700"
+      className="relative flex items-center gap-2 px-3.5 py-2 rounded-full text-sm font-medium text-slate-700 transform-gpu will-change-transform"
     >
       {active && (
         <motion.span
           layoutId="nav-active-pill"
-          transition={{ type: "spring", stiffness: 500, damping: 30 }}
+          transition={{ type: "tween", duration: 0.15 }}
           className="absolute inset-0 rounded-full bg-gray-200/60 border border-gray-300/50 shadow-sm"
         />
       )}
@@ -53,14 +53,14 @@ const NavPill = ({
         onClick={onClick}
         target={external ? "_blank" : undefined}
         rel={external ? "noopener noreferrer" : undefined}
-        className="outline-none"
+        className="outline-none flex-shrink-0"
       >
         {content}
       </a>
     );
   }
   return (
-    <button onClick={onClick} className="outline-none">
+    <button onClick={onClick} className="outline-none flex-shrink-0">
       {content}
     </button>
   );
@@ -103,18 +103,16 @@ const Navbar = () => {
   };
 
   return (
-    <motion.nav
-      initial={{ opacity: 0, y: -16 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
-      className="fixed top-4 md:top-5 left-1/2 -translate-x-1/2 z-50 w-[90vw] md:w-auto md:max-w-[95vw] mx-auto transform-gpu"
-    >
+    <nav className="fixed top-4 left-1/2 -translate-x-1/2 w-[90vw] max-w-fit z-50">
       <motion.div
+        initial={{ opacity: 0, y: -16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
         ref={containerRef}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
-        style={{ x, y, scrollbarWidth: "none", msOverflowStyle: "none" } as React.CSSProperties}
-        className="flex items-center gap-1 sm:gap-1.5 pl-2 pr-1.5 py-1.5 rounded-full bg-white/45 backdrop-blur-2xl backdrop-saturate-150 border border-white/60 shadow-xl shadow-black/5 overflow-x-auto md:overflow-visible [&::-webkit-scrollbar]:hidden"
+        style={{ x, y, scrollbarWidth: "none", msOverflowStyle: "none", willChange: "transform" } as React.CSSProperties}
+        className="flex items-center gap-1 overflow-x-auto no-scrollbar whitespace-nowrap w-full px-2 py-1 rounded-full bg-white/45 backdrop-blur-md sm:backdrop-blur-2xl backdrop-saturate-150 border border-white/60 shadow-xl shadow-black/5 transform-gpu will-change-transform"
       >
         {/* Brand mark */}
         <motion.a
@@ -122,7 +120,7 @@ const Navbar = () => {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           transition={{ type: "spring", stiffness: 400, damping: 22 }}
-          className="px-3 py-2 rounded-full text-sm font-semibold tracking-tight-custom text-slate-900"
+          className="px-3 py-2 rounded-full text-sm font-semibold tracking-tight-custom text-slate-900 flex-shrink-0 transform-gpu will-change-transform"
         >
           IS<span className="text-slate-400">.</span>
         </motion.a>
@@ -151,7 +149,7 @@ const Navbar = () => {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.94 }}
           transition={{ type: "spring", stiffness: 400, damping: 22 }}
-          className="flex items-center gap-1.5 px-3.5 py-2 rounded-full text-sm font-medium text-white bg-slate-900/90 hover:bg-slate-900 transition-colors"
+          className="flex items-center gap-1.5 px-3.5 py-2 rounded-full text-sm font-medium text-white bg-slate-900/90 hover:bg-slate-900 transition-colors flex-shrink-0 transform-gpu will-change-transform"
           style={{
             boxShadow:
               "0 1px 0 0 hsla(0,0%,100%,0.15) inset, 0 6px 18px -6px hsla(222,33%,20%,0.35)",
@@ -161,7 +159,7 @@ const Navbar = () => {
           <span className="hidden sm:inline">Resume</span>
         </motion.a>
       </motion.div>
-    </motion.nav>
+    </nav>
   );
 };
 
