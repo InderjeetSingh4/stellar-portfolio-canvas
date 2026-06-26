@@ -15,7 +15,7 @@ const Marquee = () => {
   return (
     <div className="relative overflow-hidden py-16 md:py-24 border-y border-border">
       <motion.div
-        className="flex whitespace-nowrap"
+        className="flex whitespace-nowrap transform-gpu will-change-transform"
         animate={{ x: [0, "-50%"] }}
         transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
         style={{ willChange: "transform" }}

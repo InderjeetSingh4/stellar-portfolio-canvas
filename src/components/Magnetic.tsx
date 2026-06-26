@@ -36,7 +36,7 @@ const Magnetic = ({ children, className = "", strength = 0.3 }: MagneticProps) =
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={handleMouseLeave}
       style={{ x, y, willChange: "transform" }}
-      className={`inline-block backface-visibility-hidden ${className}`}
+      className={`inline-block backface-visibility-hidden transform-gpu will-change-transform ${className}`}
     >
       {children}
     </motion.div>

@@ -31,7 +31,7 @@ const ExperienceTimeline = () => {
       <div className="absolute left-3 md:left-5 top-0 bottom-0 w-px">
         <div className="h-full w-full bg-border" />
         <motion.div
-          className="absolute inset-0 w-full"
+          className="absolute inset-0 w-full transform-gpu will-change-transform"
           style={{
             background: "linear-gradient(180deg, transparent 0%, hsl(var(--muted-foreground)) 40%, hsl(var(--muted-foreground)) 60%, transparent 100%)",
             opacity: 0.3,
@@ -49,7 +49,7 @@ const ExperienceTimeline = () => {
               <div className="absolute -left-8 md:-left-12 top-1.5 flex items-center justify-center">
                 <div className="w-2.5 h-2.5 rounded-full bg-muted-foreground/50 border-2 border-background" />
                 <motion.div
-                  className="absolute w-5 h-5 rounded-full"
+                  className="absolute w-5 h-5 rounded-full transform-gpu will-change-transform"
                   style={{ background: "radial-gradient(circle, hsl(var(--muted-foreground) / 0.2), transparent 70%)" }}
                   animate={{ scale: [1, 1.8, 1], opacity: [0.4, 0, 0.4] }}
                   transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: i * 0.5 }}

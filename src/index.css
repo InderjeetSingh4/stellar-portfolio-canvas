@@ -174,4 +174,13 @@
   .tracking-display {
     letter-spacing: -0.045em;
   }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
 }

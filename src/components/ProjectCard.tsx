@@ -34,7 +34,7 @@ const DashboardVisual = () => (
               whileInView={{ height: `${h}%` }}
               viewport={{ once: true }}
               transition={{ delay: 0.3 + i * 0.05, duration: 0.6, ease: "easeOut" }}
-              className="flex-1 rounded-sm"
+              className="flex-1 rounded-sm transform-gpu will-change-transform"
               style={{ background: "linear-gradient(180deg, hsla(220,10%,65%,0.55) 0%, hsla(220,10%,55%,0.15) 100%)" }}
             />
           ))}
@@ -58,12 +58,12 @@ const VisionVisual = () => (
     <motion.div
       animate={{ rotate: 360 }}
       transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-      className="absolute w-28 h-28 rounded-full border border-slate-900/15"
+      className="absolute w-28 h-28 rounded-full border border-slate-900/15 transform-gpu will-change-transform"
     />
     <motion.div
       animate={{ rotate: -360 }}
       transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-      className="absolute w-20 h-20 rounded-full border border-slate-900/20"
+      className="absolute w-20 h-20 rounded-full border border-slate-900/20 transform-gpu will-change-transform"
     />
     <div className="absolute w-12 h-12 rounded-full border border-slate-900/25 bg-slate-900/5" />
     <div className="absolute w-4 h-4 rounded-full bg-slate-900/25" style={{ boxShadow: "0 0 16px hsla(220,8%,70%,0.25)" }} />
@@ -72,7 +72,7 @@ const VisionVisual = () => (
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
       transition={{ delay: 0.4, duration: 0.6 }}
-      className="absolute top-5 right-8 w-16 h-12 border border-slate-900/35 rounded-sm"
+      className="absolute top-5 right-8 w-16 h-12 border border-slate-900/35 rounded-sm transform-gpu will-change-transform"
     >
       <span className="absolute -top-3 left-0 text-[8px] text-slate-600 font-mono">obj_01</span>
     </motion.div>
@@ -81,7 +81,7 @@ const VisionVisual = () => (
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
       transition={{ delay: 0.6, duration: 0.6 }}
-      className="absolute bottom-6 left-10 w-20 h-10 border border-slate-900/30 rounded-sm"
+      className="absolute bottom-6 left-10 w-20 h-10 border border-slate-900/30 rounded-sm transform-gpu will-change-transform"
     >
       <span className="absolute -top-3 left-0 text-[8px] text-slate-600 font-mono">obj_02</span>
     </motion.div>
@@ -173,7 +173,7 @@ const ProjectCard = ({ title, subtitle, description, tags, visual, index, link }
         skewY: isMobile ? 0 : scrollSkew,
         transition: "skewY 0.3s ease-out",
       }}
-      className="transform-gpu"
+      className="transform-gpu will-change-transform"
     >
       <div
         ref={cardRef}
