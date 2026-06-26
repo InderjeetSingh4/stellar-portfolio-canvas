@@ -19,6 +19,7 @@ import AboutBento from "@/components/AboutBento";
 import ExperienceTimeline from "@/components/ExperienceTimeline";
 import Certifications from "@/components/Certifications";
 import HeroGradientMesh from "@/components/HeroGradientMesh";
+import BackgroundDoodles from "@/components/BackgroundDoodles";
 
 const projects = [
   {
@@ -80,6 +81,7 @@ const Index = () => {
           <div className="relative min-h-screen overflow-x-hidden">
             <CustomCursor />
             <GrainOverlay />
+            <BackgroundDoodles />
             <ParticleField />
             <Navbar />
 

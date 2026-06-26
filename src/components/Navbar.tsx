@@ -37,12 +37,8 @@ const NavPill = ({
       {active && (
         <motion.span
           layoutId="nav-active-pill"
-          transition={{ type: "spring", stiffness: 380, damping: 32 }}
-          className="absolute inset-0 rounded-full bg-white/85 border border-white/90"
-          style={{
-            boxShadow:
-              "0 1px 0 0 hsla(0,0%,100%,1) inset, 0 6px 16px -8px hsla(222,33%,20%,0.18)",
-          }}
+          transition={{ type: "spring", stiffness: 500, damping: 30 }}
+          className="absolute inset-0 rounded-full bg-gray-200/60 border border-gray-300/50 shadow-sm"
         />
       )}
       <Icon size={15} strokeWidth={2} className="relative z-10" />
@@ -111,14 +107,14 @@ const Navbar = () => {
       initial={{ opacity: 0, y: -16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
-      className="fixed top-4 md:top-5 left-1/2 -translate-x-1/2 z-50 px-4 w-auto max-w-[95vw]"
+      className="fixed top-4 md:top-5 left-1/2 -translate-x-1/2 z-50 w-[90vw] md:w-auto md:max-w-[95vw] mx-auto transform-gpu"
     >
       <motion.div
         ref={containerRef}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
-        style={{ x, y }}
-        className="flex items-center gap-1 sm:gap-1.5 pl-2 pr-1.5 py-1.5 rounded-full bg-white/45 backdrop-blur-2xl backdrop-saturate-150 border border-white/60 shadow-xl shadow-black/5"
+        style={{ x, y, scrollbarWidth: "none", msOverflowStyle: "none" } as React.CSSProperties}
+        className="flex items-center gap-1 sm:gap-1.5 pl-2 pr-1.5 py-1.5 rounded-full bg-white/45 backdrop-blur-2xl backdrop-saturate-150 border border-white/60 shadow-xl shadow-black/5 overflow-x-auto md:overflow-visible [&::-webkit-scrollbar]:hidden"
       >
         {/* Brand mark */}
         <motion.a

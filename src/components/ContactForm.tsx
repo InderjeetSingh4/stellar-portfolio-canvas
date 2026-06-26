@@ -58,7 +58,7 @@ const ContactForm = () => {
         disabled={status === "sending"}
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
-        className="w-full flex items-center justify-center gap-2 glass-card glass-card-hover px-6 py-3 text-sm font-medium text-foreground tracking-wide disabled:opacity-50 transition-all duration-300"
+        className="w-full flex items-center justify-center gap-2 rounded-2xl px-6 py-3 text-sm font-medium tracking-wide bg-black text-white hover:bg-neutral-800 transition-colors disabled:opacity-50 transform-gpu"
       >
         {status === "sent" ? "Message Sent ✓" : status === "sending" ? "Opening Mail..." : (<>Send Message <Send size={14} /></>)}
       </motion.button>
