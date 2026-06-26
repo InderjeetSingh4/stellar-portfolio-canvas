@@ -1,6 +1,7 @@
 import { useRef, useCallback, useState } from "react";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { ExternalLink } from "lucide-react";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 
 interface ProjectCardProps {
@@ -102,6 +103,7 @@ const ProjectCard = ({ title, subtitle, description, tags, visual, index, link }
   const tagsRef = useRef<HTMLDivElement>(null);
   const state = useRef({ x: 0.5, y: 0.5, hovered: false });
   const [scrollSkew, setScrollSkew] = useState(0);
+  const isMobile = useIsMobile();
 
   // Scroll skew effect
   const { scrollY } = useScroll();
@@ -157,29 +159,29 @@ const ProjectCard = ({ title, subtitle, description, tags, visual, index, link }
   return (
     <motion.div
       ref={wrapperRef}
-      initial={{ opacity: 0, y: 80, rotateX: 8 }}
-      whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{
-        type: "spring",
-        stiffness: 60,
-        damping: 20,
-        delay: index * 0.15,
-      }}
+      initial={isMobile ? { opacity: 0, y: 20 } : { opacity: 0, y: 80, rotateX: 8 }}
+      whileInView={isMobile ? { opacity: 1, y: 0 } : { opacity: 1, y: 0, rotateX: 0 }}
+      viewport={{ once: true, margin: "-40px" }}
+      transition={
+        isMobile
+          ? { duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: index * 0.08 }
+          : { type: "spring", stiffness: 60, damping: 20, delay: index * 0.15 }
+      }
       style={{
         willChange: "transform, opacity",
-        perspective: 1200,
-        skewY: scrollSkew,
+        perspective: isMobile ? undefined : 1200,
+        skewY: isMobile ? 0 : scrollSkew,
         transition: "skewY 0.3s ease-out",
       }}
+      className="transform-gpu"
     >
       <div
         ref={cardRef}
         data-cursor-view
-        onMouseMove={onMouseMove}
-        onMouseEnter={() => { state.current.hovered = true; update(); }}
-        onMouseLeave={() => { state.current.hovered = false; update(); }}
-        className="project-card-glass p-8 cursor-pointer"
+        onMouseMove={isMobile ? undefined : onMouseMove}
+        onMouseEnter={isMobile ? undefined : () => { state.current.hovered = true; update(); }}
+        onMouseLeave={isMobile ? undefined : () => { state.current.hovered = false; update(); }}
+        className="project-card-glass p-8 cursor-pointer transform-gpu"
         style={{ transition: "transform 0.4s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.5s ease, border-color 0.5s ease" }}
       >
         {/* Glow follow */}
