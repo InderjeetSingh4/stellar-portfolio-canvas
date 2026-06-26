@@ -103,13 +103,11 @@ const Navbar = () => {
   };
 
   return (
-    <motion.nav
-      initial={{ opacity: 0, y: -16 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
-      className="fixed top-4 left-1/2 -translate-x-1/2 w-[90vw] max-w-fit z-50 transform-gpu will-change-transform"
-    >
+    <nav className="fixed top-4 left-1/2 -translate-x-1/2 w-[90vw] max-w-fit z-50">
       <motion.div
+        initial={{ opacity: 0, y: -16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
         ref={containerRef}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
@@ -161,7 +159,7 @@ const Navbar = () => {
           <span className="hidden sm:inline">Resume</span>
         </motion.a>
       </motion.div>
-    </motion.nav>
+    </nav>
   );
 };
 
