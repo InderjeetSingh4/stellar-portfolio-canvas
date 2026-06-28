@@ -36,9 +36,10 @@ const NavPill = ({
     >
       {active && (
         <motion.span
-          layoutId="nav-active-pill"
-          transition={{ type: "tween", duration: 0.15 }}
-          className="absolute inset-0 rounded-full bg-gray-200/60 border border-gray-300/50 shadow-sm"
+          layoutId="activeTabPill"
+          layout
+          transition={{ type: "spring", stiffness: 400, damping: 30, mass: 0.8 }}
+          className="absolute inset-0 z-0 rounded-full bg-gray-200/60 border border-gray-300/50 shadow-sm transform-gpu"
         />
       )}
       <Icon size={15} strokeWidth={2} className="relative z-10" />
