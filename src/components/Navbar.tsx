@@ -2,7 +2,7 @@ import { motion, useSpring } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import { User, FolderGit2, Briefcase, Mail, FileText, type LucideIcon } from "lucide-react";
 
-const navItems = [
+const navItems: { id: string; label: string; icon: LucideIcon }[] = [
   { id: "about", label: "About", icon: User },
   { id: "projects", label: "Projects", icon: FolderGit2 },
   { id: "experience", label: "Experience", icon: Briefcase },
@@ -12,76 +12,20 @@ const navItems = [
 const RESUME_URL =
   "https://drive.google.com/file/d/1-txpQWlRfcHm45_5WIqCD75JhyR0krkC/view?usp=drive_link";
 
-const NavPill = ({
-  active,
-  onClick,
-  icon: Icon,
-  label,
-  href,
-  external,
-}: {
-  active?: boolean;
-  onClick?: () => void;
-  icon: LucideIcon;
-  label: string;
-  href?: string;
-  external?: boolean;
-}) => {
-  const content = (
-    <motion.span
-      whileHover={{ scale: 1.08 }}
-      whileTap={{ scale: 0.92 }}
-      transition={{ type: "spring", stiffness: 400, damping: 22 }}
-      className="relative flex items-center gap-2 px-3.5 py-2 rounded-full text-sm font-medium text-slate-700 transform-gpu will-change-transform"
-    >
-      {active && (
-        <motion.span
-          layoutId="activeTabPill"
-          layout
-          transition={{ type: "spring", stiffness: 400, damping: 30, mass: 0.8 }}
-          className="absolute inset-0 z-0 rounded-full bg-gray-200/60 border border-gray-300/50 shadow-sm transform-gpu"
-        />
-      )}
-      <Icon size={15} strokeWidth={2} className="relative z-10" />
-      <span className="relative z-10 hidden sm:inline">{label}</span>
-    </motion.span>
-  );
-
-  if (href) {
-    return (
-      <a
-        href={href}
-        onClick={onClick}
-        target={external ? "_blank" : undefined}
-        rel={external ? "noopener noreferrer" : undefined}
-        className="outline-none flex-shrink-0"
-      >
-        {content}
-      </a>
-    );
-  }
-  return (
-    <button onClick={onClick} className="outline-none flex-shrink-0">
-      {content}
-    </button>
-  );
-};
-
 const Navbar = () => {
   const [active, setActive] = useState("about");
   const x = useSpring(0, { stiffness: 150, damping: 22 });
   const y = useSpring(0, { stiffness: 150, damping: 22 });
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Scroll-spy
   useEffect(() => {
     const ids = navItems.map((n) => n.id);
     const onScroll = () => {
-      const y = window.scrollY + 140;
+      const yScroll = window.scrollY + 140;
       let current = ids[0];
       for (const id of ids) {
         const el = document.getElementById(id);
-        if (el && el.offsetTop <= y) current = id;
+        if (el && el.offsetTop <= yScroll) current = id;
       }
       setActive(current);
     };
@@ -128,17 +72,36 @@ const Navbar = () => {
 
         <span className="h-5 w-px bg-slate-900/10 mx-0.5" />
 
-        {/* Nav items */}
-        {navItems.map((item) => (
-          <NavPill
-            key={item.id}
-            icon={item.icon}
-            label={item.label}
-            href={`#${item.id}`}
-            onClick={() => setActive(item.id)}
-            active={active === item.id}
-          />
-        ))}
+        {/* Nav items — single parent map for shared layoutId */}
+        {navItems.map((tab) => {
+          const isActive = active === tab.id;
+          const Icon = tab.icon;
+          return (
+            <a
+              key={tab.id}
+              href={`#${tab.id}`}
+              onClick={() => setActive(tab.id)}
+              className="relative flex-shrink-0 outline-none"
+            >
+              <motion.span
+                whileHover={{ scale: 1.06 }}
+                whileTap={{ scale: 0.94 }}
+                transition={{ type: "spring", stiffness: 400, damping: 22 }}
+                className="relative flex items-center gap-2 px-3.5 py-2 rounded-full text-sm font-medium text-slate-700 transform-gpu will-change-transform"
+              >
+                {isActive && (
+                  <motion.span
+                    layoutId="navbar-active-pill"
+                    transition={{ type: "spring", stiffness: 500, damping: 35, mass: 1 }}
+                    className="absolute inset-0 z-0 bg-gray-200/60 border border-gray-300/50 shadow-sm rounded-full"
+                  />
+                )}
+                <Icon size={15} strokeWidth={2} className="relative z-10" />
+                <span className="relative z-10 hidden sm:inline">{tab.label}</span>
+              </motion.span>
+            </a>
+          );
+        })}
 
         <span className="h-5 w-px bg-slate-900/10 mx-0.5" />
 
