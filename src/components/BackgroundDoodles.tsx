@@ -1,5 +1,5 @@
 // Explicit, subtle SVG doodle layer for the light background.
-const iconClass = "absolute text-gray-400 opacity-[0.07] select-none pointer-events-none";
+const iconClass = "absolute text-slate-400 opacity-[0.25] mix-blend-multiply select-none pointer-events-none";
 
 const BackgroundDoodles = () => {
   return (
