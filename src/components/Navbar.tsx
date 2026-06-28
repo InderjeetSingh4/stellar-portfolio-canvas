@@ -1,129 +1,68 @@
-import { motion, useSpring } from "framer-motion";
-import { useRef, useState, useEffect } from "react";
-import { User, FolderGit2, Briefcase, Mail, FileText, type LucideIcon } from "lucide-react";
+import { motion } from "framer-motion";
+import { useState } from "react";
 
-const navItems: { id: string; label: string; icon: LucideIcon }[] = [
-  { id: "about", label: "About", icon: User },
-  { id: "projects", label: "Projects", icon: FolderGit2 },
-  { id: "experience", label: "Experience", icon: Briefcase },
-  { id: "contact", label: "Contact", icon: Mail },
+const tabs = [
+  { label: "IS.", target: "top" },
+  { label: "About", target: "about" },
+  { label: "Projects", target: "projects" },
+  { label: "Experience", target: "experience" },
+  { label: "Contact", target: "contact" },
 ];
 
 const RESUME_URL =
   "https://drive.google.com/file/d/1-txpQWlRfcHm45_5WIqCD75JhyR0krkC/view?usp=drive_link";
 
 const Navbar = () => {
-  const [active, setActive] = useState("about");
-  const x = useSpring(0, { stiffness: 150, damping: 22 });
-  const y = useSpring(0, { stiffness: 150, damping: 22 });
-  const containerRef = useRef<HTMLDivElement>(null);
+  const [activeTab, setActiveTab] = useState(tabs[0].label);
 
-  useEffect(() => {
-    const ids = navItems.map((n) => n.id);
-    const onScroll = () => {
-      const yScroll = window.scrollY + 140;
-      let current = ids[0];
-      for (const id of ids) {
-        const el = document.getElementById(id);
-        if (el && el.offsetTop <= yScroll) current = id;
-      }
-      setActive(current);
-    };
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  const handleTabClick = (tab: (typeof tabs)[number]) => {
+    setActiveTab(tab.label);
 
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!containerRef.current) return;
-    const rect = containerRef.current.getBoundingClientRect();
-    const cx = rect.left + rect.width / 2;
-    const cy = rect.top + rect.height / 2;
-    x.set((e.clientX - cx) * 0.04);
-    y.set((e.clientY - cy) * 0.04);
-  };
-  const handleMouseLeave = () => {
-    x.set(0);
-    y.set(0);
+    if (tab.target === "top") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
+
+    document.getElementById(tab.target)?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   return (
-    <nav className="fixed top-4 left-1/2 -translate-x-1/2 w-[90vw] max-w-fit z-50">
-      <motion.div
-        initial={{ opacity: 0, y: -16 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
-        ref={containerRef}
-        onMouseMove={handleMouseMove}
-        onMouseLeave={handleMouseLeave}
-        style={{ x, y, scrollbarWidth: "none", msOverflowStyle: "none", willChange: "transform" } as React.CSSProperties}
-        className="flex items-center gap-1 overflow-x-auto no-scrollbar whitespace-nowrap w-full px-2 py-1 rounded-full bg-white/45 backdrop-blur-md sm:backdrop-blur-2xl backdrop-saturate-150 border border-white/60 shadow-xl shadow-black/5 transform-gpu will-change-transform"
+    <motion.nav
+      initial={{ opacity: 0, y: -16 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
+      className="fixed top-4 left-1/2 -translate-x-1/2 w-[90vw] max-w-fit z-50 flex items-center gap-1 overflow-x-auto no-scrollbar whitespace-nowrap bg-white/40 backdrop-blur-md sm:backdrop-blur-2xl border border-white/60 shadow-lg shadow-black/5 px-2 py-1.5 rounded-full transform-gpu will-change-transform"
+      style={{ scrollbarWidth: "none", msOverflowStyle: "none", willChange: "transform" } as React.CSSProperties}
+    >
+      {tabs.map((tab) => (
+        <button
+          key={tab.label}
+          type="button"
+          onClick={() => handleTabClick(tab)}
+          className="relative px-4 py-2 text-sm font-medium transition-colors text-slate-900 flex-shrink-0 transform-gpu will-change-transform"
+        >
+          {activeTab === tab.label && (
+            <motion.div
+              layoutId="active-pill-background"
+              className="absolute inset-0 bg-slate-200/80 rounded-full z-0 shadow-sm"
+              transition={{ type: "spring", stiffness: 500, damping: 30, mass: 1 }}
+            />
+          )}
+          <span className="relative z-10">{tab.label}</span>
+        </button>
+      ))}
+
+      <div className="w-px h-6 bg-slate-300 mx-1 flex-shrink-0" />
+
+      <a
+        href={RESUME_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="px-4 py-2 bg-slate-900 text-white text-sm font-medium rounded-full hover:bg-slate-800 transition-colors flex-shrink-0 transform-gpu will-change-transform"
       >
-        {/* Brand mark */}
-        <motion.a
-          href="#top"
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          transition={{ type: "spring", stiffness: 400, damping: 22 }}
-          className="px-3 py-2 rounded-full text-sm font-semibold tracking-tight-custom text-slate-900 flex-shrink-0 transform-gpu will-change-transform"
-        >
-          IS<span className="text-slate-400">.</span>
-        </motion.a>
-
-        <span className="h-5 w-px bg-slate-900/10 mx-0.5" />
-
-        {/* Nav items — single parent map for shared layoutId */}
-        {navItems.map((tab) => {
-          const isActive = active === tab.id;
-          const Icon = tab.icon;
-          return (
-            <a
-              key={tab.id}
-              href={`#${tab.id}`}
-              onClick={() => setActive(tab.id)}
-              className="relative flex-shrink-0 outline-none"
-            >
-              <motion.span
-                whileHover={{ scale: 1.06 }}
-                whileTap={{ scale: 0.94 }}
-                transition={{ type: "spring", stiffness: 400, damping: 22 }}
-                className="relative flex items-center gap-2 px-3.5 py-2 rounded-full text-sm font-medium text-slate-700 transform-gpu will-change-transform"
-              >
-                {isActive && (
-                  <motion.span
-                    layoutId="navbar-active-pill"
-                    transition={{ type: "spring", stiffness: 500, damping: 35, mass: 1 }}
-                    className="absolute inset-0 z-0 bg-gray-200/60 border border-gray-300/50 shadow-sm rounded-full"
-                  />
-                )}
-                <Icon size={15} strokeWidth={2} className="relative z-10" />
-                <span className="relative z-10 hidden sm:inline">{tab.label}</span>
-              </motion.span>
-            </a>
-          );
-        })}
-
-        <span className="h-5 w-px bg-slate-900/10 mx-0.5" />
-
-        {/* Resume capsule */}
-        <motion.a
-          href={RESUME_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.94 }}
-          transition={{ type: "spring", stiffness: 400, damping: 22 }}
-          className="flex items-center gap-1.5 px-3.5 py-2 rounded-full text-sm font-medium text-white bg-slate-900/90 hover:bg-slate-900 transition-colors flex-shrink-0 transform-gpu will-change-transform"
-          style={{
-            boxShadow:
-              "0 1px 0 0 hsla(0,0%,100%,0.15) inset, 0 6px 18px -6px hsla(222,33%,20%,0.35)",
-          }}
-        >
-          <FileText size={14} strokeWidth={2} />
-          <span className="hidden sm:inline">Resume</span>
-        </motion.a>
-      </motion.div>
-    </nav>
+        Resume
+      </a>
+    </motion.nav>
   );
 };
 
