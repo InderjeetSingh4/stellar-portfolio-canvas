@@ -26,7 +26,7 @@ const Typewriter = () => {
           animate={{ y: "0%", opacity: 1 }}
           exit={{ y: "-100%", opacity: 0 }}
           transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
-          className="inline-block text-muted-foreground"
+          className="inline-block text-gray-700"
         >
           {roles[currentIndex]}
         </motion.span>
