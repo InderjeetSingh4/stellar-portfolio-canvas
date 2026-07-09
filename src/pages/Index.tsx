@@ -20,6 +20,7 @@ import ExperienceTimeline from "@/components/ExperienceTimeline";
 import Certifications from "@/components/Certifications";
 import HeroGradientMesh from "@/components/HeroGradientMesh";
 import BackgroundDoodles from "@/components/BackgroundDoodles";
+import ParallaxDoodles from "@/components/ParallaxDoodles";
 
 const projects = [
   {
@@ -87,10 +88,17 @@ const Index = () => {
 
             {/* Hero */}
             <section className="relative min-h-screen flex flex-col items-center justify-center section-padding pt-32 overflow-hidden">
+              <ParallaxDoodles />
               <HeroGradientMesh />
               <div className="max-w-7xl w-full mx-auto flex flex-col items-center relative z-10">
                 <HeroObject />
-                <div className="text-center mt-8 max-w-3xl mx-auto">
+                <motion.div
+                  initial={{ opacity: 0, y: 30, filter: "blur(14px)" }}
+                  animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                  transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
+                  className="text-center mt-10 max-w-2xl mx-auto relative rounded-3xl px-8 py-10 md:px-12 md:py-12 border border-white/60 shadow-[0_1px_0_0_rgba(255,255,255,0.9)_inset,0_20px_60px_-20px_rgba(15,23,42,0.15)] backdrop-blur-2xl bg-white/55 [backdrop-filter:blur(28px)_saturate(160%)]"
+                >
+                  <div className="pointer-events-none absolute inset-0 rounded-3xl bg-[linear-gradient(135deg,rgba(255,255,255,0.55)_0%,transparent_55%,rgba(200,210,225,0.18)_100%)]" />
                   <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-display text-foreground leading-[1.05] flex flex-wrap justify-center gap-x-4">
                     {"Inderjeet Singh".split(" ").map((word, i) => (
                       <motion.span
@@ -124,7 +132,7 @@ const Index = () => {
                   >
                     Building scalable web architecture and data-driven systems. Currently pursuing a B.Tech in Artificial Intelligence and Data Science (Class of 2027).
                   </motion.p>
-                </div>
+                </motion.div>
 
                 {/* Scroll indicator */}
                 <motion.div
