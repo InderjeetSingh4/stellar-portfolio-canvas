@@ -20,6 +20,7 @@ import ExperienceTimeline from "@/components/ExperienceTimeline";
 import Certifications from "@/components/Certifications";
 import HeroGradientMesh from "@/components/HeroGradientMesh";
 import BackgroundDoodles from "@/components/BackgroundDoodles";
+import ParallaxDoodles from "@/components/ParallaxDoodles";
 
 const projects = [
   {
