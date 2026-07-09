@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Github, Linkedin, Phone } from "lucide-react";
-import ParticleField from "@/components/ParticleField";
-import HeroObject from "@/components/HeroObject";
 import ScrollReveal from "@/components/ScrollReveal";
 import ProjectCard from "@/components/ProjectCard";
 import Navbar from "@/components/Navbar";
@@ -18,8 +16,6 @@ import Typewriter from "@/components/Typewriter";
 import AboutBento from "@/components/AboutBento";
 import ExperienceTimeline from "@/components/ExperienceTimeline";
 import Certifications from "@/components/Certifications";
-import HeroGradientMesh from "@/components/HeroGradientMesh";
-import BackgroundDoodles from "@/components/BackgroundDoodles";
 import ParallaxDoodles from "@/components/ParallaxDoodles";
 
 const projects = [
