@@ -132,7 +132,7 @@ const Index = () => {
                   >
                     Building scalable web architecture and data-driven systems. Currently pursuing a B.Tech in Artificial Intelligence and Data Science (Class of 2027).
                   </motion.p>
-                </div>
+                </motion.div>
 
                 {/* Scroll indicator */}
                 <motion.div
